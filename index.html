@@ -546,7 +546,7 @@ function renderIdeas(){
     .sort((a,b)=>(a.dzial||'').localeCompare(b.dzial||'')||((a.nr||99)-(b.nr||99)));
   const el=document.getElementById('idea-body');
   if(!list.length){el.innerHTML=`<div class="empty"><p>Pusto — na razie.</p><span>Zapisz pierwszy pomysł, zanim uleci.</span></div>`;return}
-  let h='',last=' ';
+  let h='',last=null;
   list.forEach(i=>{
     const d=i.dzial||'Bez działu';
     if(d!==last){h+=`<div class="lbl">${esc(d)}</div>`;last=d}
