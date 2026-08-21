@@ -9,17 +9,22 @@
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Karla:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root{
---ink:#16213A; --ink-soft:#5A6880; --ink-faint:#93A0B4; --paper:#F5F7FA; --card:#FFFFFF; --rule:#D3DEEC; --rule-soft:#E7EDF5;
---pen:#2F4FCF; --red:#CE3A2E; --green:#22795A; --amber:#B4720E; --task:#2F4FCF; --event:#B4720E;
---shadow:0 1px 2px rgba(22,33,58,.05), 0 6px 18px rgba(22,33,58,.06);
+  --ink:#3B2E22; --ink-soft:#8C7A63; --ink-faint:#BBA98C;
+  --paper:#FBF3E3; --card:#FFFDF7;
+  --rule:#E8DAC0; --rule-soft:#F2E9D8;
+  --pen:#D97B29; --red:#D64545; --green:#4C8C3D; --amber:#B8791A;
+  --shadow:0 1px 2px rgba(59,46,34,.06), 0 6px 18px rgba(59,46,34,.07);
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;padding:0}
 body{
-font-family:"Karla",system-ui,-apple-system,sans-serif; color:var(--ink); background-color:var(--paper);
-background-image:linear-gradient(var(--rule-soft) 1px,transparent 1px), linear-gradient(90deg,var(--rule-soft) 1px,transparent 1px);
-background-size:22px 22px; font-size:16px; line-height:1.45; min-height:100vh;
-padding-bottom:calc(76px + env(safe-area-inset-bottom));
+  font-family:"Karla",system-ui,-apple-system,sans-serif;
+  color:var(--ink); background-color:var(--paper);
+  background-image:linear-gradient(var(--rule-soft) 1px,transparent 1px),
+                   linear-gradient(90deg,var(--rule-soft) 1px,transparent 1px);
+  background-size:22px 22px;
+  font-size:16px; line-height:1.45; min-height:100vh;
+  padding-bottom:calc(76px + env(safe-area-inset-bottom));
 }
 h1,h2,h3{font-family:"Bricolage Grotesque",system-ui,sans-serif;margin:0;letter-spacing:-.02em}
 button,input,select,textarea{font-family:inherit;font-size:16px;color:inherit}
@@ -29,24 +34,27 @@ button{cursor:pointer;border:none;background:none;padding:0}
 
 /* ---------- auth ---------- */
 .authscreen{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;
-background-color:var(--paper);background-image:linear-gradient(var(--rule-soft) 1px,transparent 1px),
-linear-gradient(90deg,var(--rule-soft) 1px,transparent 1px);background-size:22px 22px}
+  background-color:var(--paper);background-image:linear-gradient(var(--rule-soft) 1px,transparent 1px),
+  linear-gradient(90deg,var(--rule-soft) 1px,transparent 1px);background-size:22px 22px}
 .authbox{width:100%;max-width:340px;background:var(--card);border-radius:16px;box-shadow:var(--shadow);padding:26px 22px}
 .authbox h1{font-size:23px;font-weight:800;margin:4px 0 18px}
 .autherr{color:var(--red);font-size:13px;margin-top:10px;min-height:16px}
 .headrow{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;max-width:900px;margin:0 auto}
 .logout{font-family:"Space Mono",monospace;font-size:10.5px;letter-spacing:.08em;color:var(--ink-faint);
-text-transform:uppercase;padding:6px 0;flex:0 0 auto}
+  text-transform:uppercase;padding:6px 0;flex:0 0 auto}
 
 header{padding:20px 14px 10px}
 .eyebrow{font-family:"Space Mono",monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft)}
 header h1{font-size:27px;font-weight:800;margin-top:3px;line-height:1.1}
 header .sub{color:var(--ink-soft);font-size:13.5px;margin-top:1px}
+.quote{margin-top:9px;padding-left:10px;border-left:2.5px solid var(--pen);font-size:12.5px;
+  font-style:italic;color:var(--ink-soft);line-height:1.4;max-width:520px;min-height:1px}
 
 main{max-width:900px;margin:0 auto;padding:0 14px 26px}
-.view{display:none} .view.on{display:block}
+.view{display:none}
+.view.on{display:block}
 .lbl{font-family:"Space Mono",monospace;font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;
-color:var(--ink-soft);margin:20px 0 9px;display:flex;align-items:center;gap:9px}
+  color:var(--ink-soft);margin:20px 0 9px;display:flex;align-items:center;gap:9px}
 .lbl::after{content:"";flex:1;height:1px;background:var(--rule)}
 .lbl:first-child{margin-top:4px}
 
@@ -54,83 +62,96 @@ color:var(--ink-soft);margin:20px 0 9px;display:flex;align-items:center;gap:9px}
 .split{display:grid;grid-template-columns:1fr 1fr;gap:11px;align-items:start}
 @media (min-width:620px){.split{grid-template-columns:1.02fr 1fr;gap:18px}}
 .colhead{font-family:"Space Mono",monospace;font-size:9.5px;letter-spacing:.14em;
-text-transform:uppercase;color:var(--ink-faint);margin-bottom:7px;padding-left:2px}
+  text-transform:uppercase;color:var(--ink-faint);margin-bottom:7px;padding-left:2px}
 
 .tl{position:relative;padding-left:32px}
 .tl::before{content:"";position:absolute;left:23px;top:3px;bottom:3px;width:1.5px;background:var(--red);opacity:.5}
 .tlrow{position:relative;margin-bottom:6px}
 .tlrow .n{position:absolute;left:-32px;top:8px;width:16px;text-align:right;
-font-family:"Space Mono",monospace;font-size:13.5px;font-weight:700;color:var(--ink-soft)}
+  font-family:"Space Mono",monospace;font-size:13.5px;font-weight:700;color:var(--ink-soft)}
 .les{background:var(--card);border-radius:9px;padding:7px 9px;box-shadow:var(--shadow);border-left:3.5px solid var(--pen)}
 .les .kl{font-family:"Bricolage Grotesque";font-weight:800;font-size:16px;line-height:1.15}
 .les .hh{font-family:"Space Mono",monospace;font-size:10.5px;color:var(--ink-soft);display:block;margin-top:1px}
 .les .rr{font-size:11px;color:var(--ink-soft)}
 .les.wych{border-left-style:double;border-left-width:5px}
 .les .tag{font-size:9px;font-family:"Space Mono",monospace;letter-spacing:.06em;
-text-transform:uppercase;color:var(--amber);display:block;margin-top:1px}
+  text-transform:uppercase;color:var(--amber);display:block;margin-top:1px}
+.les.okienko{border-left:3.5px dashed var(--rule);background:var(--rule-soft)}
+.les.okienko .kl{font-style:italic;color:var(--ink-faint)}
+.testbadge{display:inline-block;margin-top:3px;padding:1px 7px;border-radius:99px;
+  color:#fff;font-size:9px;font-weight:700;letter-spacing:.02em}
 .brk{margin:0 0 6px;padding:4px 8px;border-left:2.5px dashed var(--rule);
-font-size:10.5px;color:var(--ink-faint);line-height:1.35}
+  font-size:10.5px;color:var(--ink-faint);line-height:1.35}
 .brk b{color:var(--red);font-weight:700;display:block;font-size:11px}
 .brk .lnk{color:var(--pen);font-weight:700;font-size:11px;display:block}
 
-.pad{background:#FFFDF8;border-radius:4px 4px 8px 8px;position:relative;overflow:hidden;
-box-shadow:0 1px 2px rgba(22,33,58,.06),0 8px 22px rgba(22,33,58,.09);
-background-image:repeating-linear-gradient(#FFFDF8 0 25px,#E3E9F2 25px 26px); border:1px solid #E8E2D4}
-.pad::before{content:"";position:absolute;left:20px;top:0;bottom:0;width:1px;background:#E8A99F;z-index:0}
-.pad .tear{height:9px;background:radial-gradient(circle at 6px 9px,transparent 5px,#FFFDF8 5px) repeat-x;background-size:12px 9px}
-.pad .padin{position:relative;z-index:1;padding:4px 10px 12px 28px}
-.pad h3{font-family:"Bricolage Grotesque";font-size:11.5px;font-weight:700;letter-spacing:.02em;
-text-transform:uppercase;color:var(--ink-soft);line-height:26px;margin:0}
-.pad hr{border:none;border-top:1.5px solid #E8A99F;opacity:.45;margin:0}
-.pitem{line-height:26px;font-size:13px;display:flex;gap:6px;align-items:flex-start}
-.pitem .dot{flex:0 0 auto;width:7px;height:7px;border-radius:99px;margin-top:10px}
-.pitem .sq{flex:0 0 auto;width:13px;height:13px;border-radius:3px;border:1.5px solid var(--ink-faint);
-margin-top:7px;display:grid;place-items:center;background:#fff}
-.pitem .sq[aria-pressed="true"]{background:var(--green);border-color:var(--green)}
-.pitem .tx{flex:1;min-width:0}
-.pitem.done .tx{text-decoration:line-through;color:var(--ink-faint)}
-.pitem .kk{font-family:"Space Mono",monospace;font-size:10.5px;font-weight:700}
-.pnone{line-height:26px;font-size:12.5px;color:var(--ink-faint);font-style:italic}
+/* ---------- notatnik ---------- */
+.notecard{background:var(--card);border:1px solid var(--rule);border-radius:14px;
+  box-shadow:var(--shadow);padding:14px 14px 8px}
+.note-h{font-family:"Space Mono",monospace;font-size:10.5px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink-soft);margin:0 0 9px}
+.note-sec+.note-sec{margin-top:16px;padding-top:14px;border-top:1px solid var(--rule-soft)}
+.ntile{display:block;width:100%;color:#fff;font-weight:700;font-size:12.5px;
+  padding:8px 11px;border-radius:8px;margin-bottom:6px;line-height:1.3}
+.nrow{display:flex;align-items:flex-start;gap:9px;padding:6px 0}
+.nrow .sq{flex:0 0 auto;width:16px;height:16px;border-radius:4px;border:1.5px solid var(--ink-faint);
+  margin-top:2px;display:grid;place-items:center;background:#fff}
+.nrow .sq[aria-pressed="true"]{background:var(--green);border-color:var(--green)}
+.nrow .tx{flex:1;min-width:0;font-size:13.5px;line-height:1.4}
+.nrow.done .tx{text-decoration:line-through;color:var(--ink-faint)}
+.nnone{font-size:12.5px;color:var(--ink-faint);font-style:italic;padding:2px 0 6px}
 
 /* ============ PLAN ============ */
 .ptab{width:100%;border-collapse:collapse;background:var(--card);border-radius:11px;
-overflow:hidden;box-shadow:var(--shadow);font-size:13.5px}
+  overflow:hidden;box-shadow:var(--shadow);font-size:13.5px}
 .ptab th{font-family:"Space Mono",monospace;font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;
-color:var(--ink-soft);font-weight:400;padding:8px 5px;background:#EFF3F9;
-border-bottom:1px solid var(--rule);text-align:left}
+  color:var(--ink-soft);font-weight:400;padding:8px 5px;background:var(--rule-soft);
+  border-bottom:1px solid var(--rule);text-align:left}
 .ptab td{padding:8px 5px;border-bottom:1px solid var(--rule-soft);vertical-align:middle}
-.ptab tr.br td{background:#FDF6F4;font-size:11.5px;color:var(--ink-soft);padding:5px}
+.ptab tr.br td{background:#FBEEDD;font-size:11.5px;color:var(--ink-soft);padding:5px}
 .ptab tr.br .dz{color:var(--red);font-weight:700}
 .ptab tr.br .todo{color:var(--pen);font-weight:700}
+.ptab tr.ok td{color:var(--ink-faint)}
 .ptab .nn{font-family:"Space Mono",monospace;font-weight:700;font-size:15px;width:24px;text-align:center}
 .ptab .gg{font-family:"Space Mono",monospace;font-size:10.5px;color:var(--ink-soft);white-space:nowrap}
 .ptab .klx{font-family:"Bricolage Grotesque";font-weight:800;font-size:15px}
 .ptab .kind{font-size:11.5px;color:var(--ink-soft)}
+
+/* ============ tydzień w skrócie ============ */
+.weekstrip{display:flex;gap:6px;margin-bottom:14px}
+.wcell{flex:1;background:var(--card);border-radius:10px;box-shadow:var(--shadow);
+  padding:8px 4px 7px;display:flex;flex-direction:column;align-items:center;gap:4px;min-width:0}
+.wcell.wk{flex:0.7}
+.wcell.today{background:var(--ink)}
+.wcell.today .wdh,.wcell.today .wdn{color:#fff}
+.wdh{font-family:"Space Mono",monospace;font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint)}
+.wdn{font-family:"Bricolage Grotesque";font-weight:800;font-size:17px;line-height:1.1}
+.wtiles{display:flex;flex-direction:column;gap:2px;width:100%;margin-top:2px}
+.wtile{font-size:8.5px;font-weight:700;color:#fff;padding:2px 4px;border-radius:4px;
+  line-height:1.3;white-space:normal;overflow-wrap:break-word;word-break:break-word;width:100%;text-align:left}
 
 /* ============ kalendarz ============ */
 .cal{background:var(--card);border-radius:12px;box-shadow:var(--shadow);overflow:hidden}
 .calbar{display:flex;align-items:center;gap:8px;padding:10px 12px;border-bottom:1px solid var(--rule-soft)}
 .calbar h2{flex:1;font-size:17px;font-weight:700;text-align:center}
 .calbar button{width:34px;height:34px;border-radius:9px;border:1px solid var(--rule);
-background:#fff;font-size:16px;color:var(--ink-soft);display:grid;place-items:center}
-.calgrid{display:grid;grid-template-columns:repeat(7,1fr)}
+  background:#fff;font-size:16px;color:var(--ink-soft);display:grid;place-items:center}
+.calgrid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr)) repeat(2,minmax(0,.6fr))}
 .calgrid .dh{font-family:"Space Mono",monospace;font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;
-color:var(--ink-faint);text-align:center;padding:6px 0;border-bottom:1px solid var(--rule-soft)}
-.cell{min-height:54px;border-bottom:1px solid var(--rule-soft);border-right:1px solid var(--rule-soft);
-padding:3px 3px 4px;display:flex;flex-direction:column;gap:2px;align-items:stretch;text-align:left;
-background:#fff;position:relative}
+  color:var(--ink-faint);text-align:center;padding:6px 0;border-bottom:1px solid var(--rule-soft)}
+.cell{min-height:52px;border-bottom:1px solid var(--rule-soft);border-right:1px solid var(--rule-soft);
+  padding:4px 4px 5px;display:flex;flex-direction:column;gap:2px;align-items:stretch;text-align:left;
+  background:#fff;position:relative}
 .cell:nth-child(7n){border-right:none}
-.cell.off{background:#FAFBFD} .cell.wknd{background:#F7F9FC}
-.cell .dn{font-family:"Space Mono",monospace;font-size:11px;color:var(--ink-soft);text-align:right;line-height:1.2}
+.cell.off{background:var(--rule-soft)}
+.cell.wknd{background:#F6EEDD}
+.cell .dn{font-family:"Space Mono",monospace;font-size:12px;color:var(--ink-soft);text-align:right;line-height:1.2}
 .cell.off .dn{color:var(--ink-faint);opacity:.55}
 .cell.today .dn{background:var(--ink);color:#fff;border-radius:5px;padding:0 4px;align-self:flex-end}
-.cell .ch{font-size:9px;font-weight:700;color:#fff;border-radius:3px;padding:1px 3px;
-line-height:1.35;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.cell .dots{display:flex;gap:2px;flex-wrap:wrap}
-.cell .dt{width:6px;height:6px;border-radius:99px}
-.cell .more{font-size:8.5px;color:var(--ink-faint)}
-.legend{display:flex;gap:12px;flex-wrap:wrap;padding:10px 12px;font-size:11.5px;color:var(--ink-soft);
-border-top:1px solid var(--rule-soft)}
+.ctile{font-size:9.5px;font-weight:700;color:#fff;padding:2px 5px;border-radius:4px;
+  line-height:1.35;white-space:normal;overflow-wrap:break-word;word-break:break-word;margin-bottom:2px;text-align:left}
+.legend{display:flex;gap:14px;flex-wrap:wrap;padding:10px 12px;font-size:12px;color:var(--ink-soft);
+  border-top:1px solid var(--rule-soft)}
 .legend span{display:flex;align-items:center;gap:5px}
 .legend i{width:9px;height:9px;border-radius:99px;display:inline-block}
 
@@ -142,149 +163,197 @@ border-top:1px solid var(--rule-soft)}
 .ttl{font-weight:700;font-size:15.5px;line-height:1.3}
 .meta{font-size:12.5px;color:var(--ink-soft);margin-top:2px}
 .pill{display:inline-block;padding:2px 8px;border-radius:99px;font-size:11px;font-weight:700;
-background:#EDF1F8;color:var(--ink-soft);white-space:nowrap}
+  background:var(--rule-soft);color:var(--ink-soft);white-space:nowrap}
 .pill.k{color:#fff}
 .pill.btn{border:1px solid var(--rule);background:#fff}
 .seg{display:flex;gap:6px;overflow-x:auto;padding:2px 0 10px;scrollbar-width:none}
 .seg::-webkit-scrollbar{display:none}
 .seg button{flex:0 0 auto;padding:7px 13px;border-radius:99px;font-size:13.5px;font-weight:700;
-background:#fff;border:1px solid var(--rule);color:var(--ink-soft)}
+  background:#fff;border:1px solid var(--rule);color:var(--ink-soft)}
 .seg button[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
 .add{width:100%;padding:12px;border-radius:11px;border:1.5px dashed var(--rule);
-color:var(--pen);font-weight:700;font-size:14.5px;background:rgba(255,255,255,.6);margin-top:6px}
+  color:var(--pen);font-weight:700;font-size:14.5px;background:rgba(255,255,255,.6);margin-top:6px}
 .empty{text-align:center;padding:26px 16px;color:var(--ink-soft);border:1.5px dashed var(--rule);
-border-radius:11px;background:rgba(255,255,255,.55)}
+  border-radius:11px;background:rgba(255,255,255,.55)}
 .empty p{margin:0 0 3px;font-size:14px}
 .empty span{font-size:12.5px;opacity:.85}
 
-nav{position:fixed;left:0;right:0;bottom:0;z-index:40;background:rgba(255,255,255,.95);
-backdrop-filter:blur(12px);border-top:1px solid var(--rule);
-padding:6px 2px calc(6px + env(safe-area-inset-bottom));display:flex;justify-content:space-around}
+nav{position:fixed;left:0;right:0;bottom:0;z-index:40;background:rgba(255,253,247,.95);
+  backdrop-filter:blur(12px);border-top:1px solid var(--rule);
+  padding:6px 2px calc(6px + env(safe-area-inset-bottom));display:flex;justify-content:space-around}
 nav button{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:5px 1px;
-color:var(--ink-soft);font-size:9.5px;font-weight:700;border-radius:10px}
+  color:var(--ink-soft);font-size:9.5px;font-weight:700;border-radius:10px}
 nav button[aria-pressed="true"]{color:var(--pen)}
 nav svg{width:20px;height:20px;stroke-width:1.9}
 
-.scrim{position:fixed;inset:0;background:rgba(22,33,58,.42);z-index:50;display:none}
+.scrim{position:fixed;inset:0;background:rgba(59,46,34,.42);z-index:50;display:none}
 .scrim.on{display:block}
 .sheet{position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--paper);
-border-radius:18px 18px 0 0;max-height:92vh;overflow-y:auto;
-padding:6px 16px calc(22px + env(safe-area-inset-bottom));
-transform:translateY(100%);transition:transform .22s cubic-bezier(.32,.72,0,1);
-max-width:900px;margin:0 auto;box-shadow:0 -8px 40px rgba(22,33,58,.16)}
+  border-radius:18px 18px 0 0;max-height:92vh;overflow-y:auto;
+  padding:6px 16px calc(22px + env(safe-area-inset-bottom));
+  transform:translateY(100%);transition:transform .22s cubic-bezier(.32,.72,0,1);
+  max-width:900px;margin:0 auto;box-shadow:0 -8px 40px rgba(59,46,34,.18)}
 .sheet.on{transform:none}
 .grab{width:38px;height:4px;border-radius:99px;background:var(--rule);margin:6px auto 12px}
 .sheet h2{font-size:20px;font-weight:800;margin-bottom:12px}
 .f{margin-bottom:12px}
 .f label{display:block;font-family:"Space Mono",monospace;font-size:10px;letter-spacing:.12em;
-text-transform:uppercase;color:var(--ink-soft);margin-bottom:5px}
+  text-transform:uppercase;color:var(--ink-soft);margin-bottom:5px}
 .f input,.f select,.f textarea{width:100%;padding:11px 12px;border-radius:9px;border:1px solid var(--rule);background:#fff}
 .f textarea{min-height:60px;resize:vertical}
 .f2{display:flex;gap:9px}.f2>*{flex:1;min-width:0}
 .chips{display:flex;flex-wrap:wrap;gap:6px}
 .chips button{padding:8px 12px;border-radius:99px;border:1px solid var(--rule);background:#fff;
-font-size:13.5px;font-weight:700;color:var(--ink-soft)}
+  font-size:13.5px;font-weight:700;color:var(--ink-soft)}
 .chips button[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
 .sheet-actions{display:flex;gap:9px;margin-top:16px;flex-wrap:wrap}
 .btn{flex:1;padding:13px;border-radius:11px;font-weight:700;font-size:15px;text-align:center}
 .btn.primary{background:var(--pen);color:#fff}
 .btn.ghost{background:#fff;border:1px solid var(--rule);color:var(--ink-soft);flex:0 0 auto;padding:13px 18px}
-.btn.danger{background:#fff;border:1px solid #F0C8C3;color:var(--red);flex:0 0 auto;padding:13px 16px}
+.btn.danger{background:#fff;border:1px solid #F0CFC2;color:var(--red);flex:0 0 auto;padding:13px 16px}
 .loading{padding:56px 20px;text-align:center;color:var(--ink-soft)}
 .toast{position:fixed;bottom:calc(86px + env(safe-area-inset-bottom));left:50%;
-transform:translateX(-50%) translateY(12px);opacity:0;pointer-events:none;
-background:var(--ink);color:#fff;padding:10px 18px;border-radius:99px;font-size:14px;
-font-weight:700;z-index:70;transition:.2s;white-space:nowrap}
+  transform:translateX(-50%) translateY(12px);opacity:0;pointer-events:none;
+  background:var(--ink);color:#fff;padding:10px 18px;border-radius:99px;font-size:14px;
+  font-weight:700;z-index:70;transition:.2s;white-space:nowrap}
 .toast.on{opacity:1;transform:translateX(-50%)}
 </style>
 </head>
 <body>
+
 <div class="authscreen" id="auth-screen">
-<div class="authbox">
-<div class="eyebrow">PLANER — MATEMATYKA</div>
-<h1>Zaloguj się</h1>
-<div class="f"><label>E-mail</label><input id="auth-email" type="email" autocomplete="username" inputmode="email"></div>
-<div class="f" style="margin-bottom:6px"><label>Hasło</label><input id="auth-pass" type="password" autocomplete="current-password"></div>
-<button class="btn primary" id="auth-submit" type="button" style="width:100%">Zaloguj</button>
-<p class="autherr" id="auth-err"></p>
+  <div class="authbox">
+    <div class="eyebrow">PLANER — MATEMATYKA</div>
+    <h1>Zaloguj się</h1>
+    <div class="f"><label>E-mail</label><input id="auth-email" type="email" autocomplete="username" inputmode="email"></div>
+    <div class="f" style="margin-bottom:6px"><label>Hasło</label><input id="auth-pass" type="password" autocomplete="current-password"></div>
+    <button class="btn primary" id="auth-submit" type="button" style="width:100%">Zaloguj</button>
+    <p class="autherr" id="auth-err"></p>
+  </div>
 </div>
-</div>
+
 <div id="app" style="display:none">
+
 <header>
-<div class="headrow">
-<div>
-<div class="eyebrow" id="eyebrow">—</div>
-<h1 id="title">Planer</h1>
-<div class="sub" id="subtitle"></div>
-</div>
-<button class="logout" id="logout-btn">Wyloguj</button>
-</div>
+  <div class="headrow">
+    <div>
+      <div class="eyebrow" id="eyebrow">—</div>
+      <h1 id="title">Planer</h1>
+      <div class="sub" id="subtitle"></div>
+      <div class="quote" id="quote"></div>
+    </div>
+    <button class="logout" id="logout-btn">Wyloguj</button>
+  </div>
 </header>
+
 <main>
-<div id="boot" class="loading">Wczytuję…</div>
-<section class="view" id="v-dzis"><div id="today-body"></div></section>
-<section class="view" id="v-plan">
-<div class="seg" id="plan-seg"></div>
-<div id="plan-body"></div>
-</section>
-<section class="view" id="v-testy"><div id="testy-body"></div></section>
-<section class="view" id="v-zadania"><div id="zadania-body"></div></section>
-<section class="view" id="v-pomysly">
-<div class="seg" id="idea-seg"></div>
-<div id="idea-body"></div>
-<button class="add" data-open="idea">+ Nowy pomysł na lekcję</button>
-</section>
+  <div id="boot" class="loading">Wczytuję…</div>
+  <section class="view" id="v-dzis"><div id="today-body"></div></section>
+  <section class="view" id="v-plan">
+    <div class="seg" id="plan-seg"></div>
+    <div id="plan-body"></div>
+  </section>
+  <section class="view" id="v-kalendarz"><div id="kalendarz-body"></div></section>
+  <section class="view" id="v-pomysly">
+    <div class="seg" id="idea-seg"></div>
+    <div id="idea-body"></div>
+    <button class="add" data-open="idea">+ Nowy pomysł na lekcję</button>
+  </section>
 </main>
+
 <nav id="nav"></nav>
 <div class="scrim" id="scrim"></div>
 <div class="sheet" id="sheet" role="dialog" aria-modal="true">
-<div class="grab"></div><div id="sheet-inner"></div>
+  <div class="grab"></div><div id="sheet-inner"></div>
 </div>
 <div class="toast" id="toast"></div>
+
 </div>
+
 <script type="module">
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+
 /* ============================================================
    KONFIGURACJA SUPABASE — wklej tu swoje dane z zakładki
    Settings → API w panelu Supabase, potem wgraj plik na GitHub.
-============================================================ */
-const SUPABASE_URL = 'https://eisuwuabzgesaduvxmka.supabase.co';
-const SUPABASE_ANON_KEY = 'sb_publishable_LOqc_nMO9g_hV3i6534c2A_0p5yezBL';
+   ============================================================ */
+const SUPABASE_URL = 'WKLEJ-TU-PROJECT-URL';
+const SUPABASE_ANON_KEY = 'WKLEJ-TU-ANON-PUBLIC-KEY';
 /* ============================================================ */
+
 const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 const CLASSES=['4B','5B','6A','6B','1 LO','2 LO'];
-const CCOL={'4B':'#D2691E','5B':'#2F4FCF','6A':'#22795A','6B':'#6F42C1','1 LO':'#B92B63','2 LO':'#0B7C86'};
-const KINDS=['matematyka','godzina wychowawcza','zajęcia dodatkowe','zastępstwo'];
+const CCOL={'4B':'#B4531F','5B':'#7A4A8C','6A':'#1F8080','6B':'#9C3566','1 LO':'#C46B6B','2 LO':'#14615F'};
+const KIND_LESSON=['matematyka','godzina wychowawcza','zajęcia dodatkowe','zastępstwo'];
 const DAYS=['Poniedziałek','Wtorek','Środa','Czwartek','Piątek'];
 const DSH=['Pn','Wt','Śr','Cz','Pt','So','Nd'];
 const MON=['stycznia','lutego','marca','kwietnia','maja','czerwca','lipca','sierpnia','września','października','listopada','grudnia'];
 const MONN=['Styczeń','Luty','Marzec','Kwiecień','Maj','Czerwiec','Lipiec','Sierpień','Wrzesień','Październik','Listopad','Grudzień'];
 const SLOTS=[
-  {n:0,a:'7:00',b:'7:45'},{n:1,a:'7:30',b:'8:15'},{n:2,a:'8:20',b:'9:05'},
-  {n:3,a:'9:10',b:'9:55'},{n:4,a:'10:00',b:'10:45'},{n:5,a:'11:00',b:'11:45'},
-  {n:6,a:'11:55',b:'12:40'},{n:7,a:'13:00',b:'13:45'},{n:8,a:'14:00',b:'14:45'}
+ {n:0,a:'7:00',b:'7:45'},{n:1,a:'7:30',b:'8:15'},{n:2,a:'8:20',b:'9:05'},
+ {n:3,a:'9:10',b:'9:55'},{n:4,a:'10:00',b:'10:45'},{n:5,a:'11:00',b:'11:45'},
+ {n:6,a:'11:55',b:'12:40'},{n:7,a:'13:00',b:'13:45'},{n:8,a:'14:00',b:'14:45'}
 ];
 const SL=n=>SLOTS.find(s=>s.n===Number(n))||{n:n,a:'',b:''};
-const TEST_TYPES=['kartkówka','sprawdzian','praca klasowa'];
+const TEST_TYPES=['kartkówka','sprawdzian','praca klasowa','poprawa','projekt'];
 const TEST_STATUS=['zapowiedziany','przeprowadzony','sprawdzony','oceny wpisane'];
 const IDEA_STATUS=['pomysł','gotowe','przeprowadzone'];
 const CATS=['dydaktyka','wychowawstwo','sprawy szkolne'];
 const PRIOS=['wysoki','średni','niski'];
-const PCOL={'wysoki':'#CE3A2E','średni':'#B4720E','niski':'#5A6880'};
-const TCOL={'zadanie':'#2F4FCF','wydarzenie':'#B4720E'};
+const PCOL={'wysoki':'#D64545','średni':'#B8791A','niski':'#8C7A63'};
+const KCOL={'sprawdzian':'#D64545','poprawa':'#B8791A','projekt':'#A8875A','wydarzenie':'#4C8C3D','zadanie':'#2F86C6'};
+
+const QUOTES=[
+"Każdy dzień w klasie to nowa szansa, żeby coś komuś się rozjaśniło.",
+"Cierpliwość, którą dajesz dziś, wraca jako pewność siebie ucznia jutro.",
+"Najlepsze lekcje pamięta się nie za wzory, tylko za to, jak się przy nich czuliśmy.",
+"Mały postęp też jest postępem — zauważ go na głos.",
+"Trudna klasa dzisiaj bywa najwdzięczniejszą klasą za rok.",
+"Pytania uczniów są ważniejsze niż idealnie przygotowane odpowiedzi.",
+"Spokojny głos uspokaja klasę szybciej niż podniesiony.",
+"Nie musisz wiedzieć wszystkiego — wystarczy, że umiesz razem z nimi szukać.",
+"Uczeń, który nie boi się błędu, uczy się dwa razy szybciej.",
+"Dobrze zaplanowana lekcja to prezent, który dajesz sobie z wyprzedzeniem.",
+"Czasem największą lekcją jest to, że w ogóle warto próbować.",
+"Twoja cierpliwość dzisiaj jest czyjąś pewnością siebie za dziesięć lat.",
+"Nie każdy dzień musi być idealny — wystarczy, że jest szczery.",
+"Zrozumienie przychodzi falami, nie liniowo — nie poddawaj się przy pierwszym odpływie.",
+"Uśmiech na początku lekcji potrafi zdziałać więcej niż najlepszy konspekt.",
+"Ucz tak, jakbyś chciała, żeby ktoś kiedyś uczył twoje własne dziecko.",
+"Najpierw relacja, potem materiał — w tej kolejności działa najlepiej.",
+"Dzisiejsze pięć minut cierpliwości oszczędzi jutro pięćdziesiąt minut frustracji.",
+"Klasa czuje, kiedy naprawdę wierzysz, że mogą się nauczyć — i stara się bardziej.",
+"Błąd na tablicy to dowód, że tu naprawdę można próbować.",
+"Dobry dzień w pracy zaczyna się od jednej rzeczy, na którą masz ochotę.",
+"Nie porównuj dzisiejszej klasy do wczorajszej — każda ma swój rytm.",
+"Czasem najważniejsza lekcja to ta, której nie było w konspekcie.",
+"Twoja energia z rana jest zaraźliwa — zadbaj o nią najpierw dla siebie.",
+"Uczniowie zapomną wzór, zapamiętają, że im kibicowałaś.",
+"Wystarczy dziś zrobić jedną rzecz odrobinę lepiej niż wczoraj.",
+"Najlepszy plan lekcji to taki, który da się zmienić w locie.",
+"Twoje pytania kontrolne uczą myślenia bardziej niż gotowe odpowiedzi.",
+"Cisza po trudnym pytaniu też jest częścią nauki — daj jej chwilę.",
+"Koniec trudnego dnia to dobry moment, żeby docenić jedną małą rzecz, która się udała."
+];
+function todayQuote(){
+  const d=new Date();
+  const start=new Date(d.getFullYear(),0,0);
+  const doy=Math.floor((d-start)/86400000);
+  return QUOTES[doy % QUOTES.length];
+}
+
 const SEED=[
-  [0,2,'6B','23'],[0,3,'4B','34'],[0,4,'6A','38'],[0,5,'5B','24'],[0,7,'2 LO','39'],
-  [1,3,'6B','23'],[1,4,'4B','37'],[1,5,'5B','32'],[1,6,'2 LO','36'],[1,7,'6A','9'],
-  [2,3,'6A','37'],[2,4,'4B','37'],[2,5,'5B','9'],[2,6,'6B','35'],[2,7,'2 LO','38','godzina wychowawcza'],[2,8,'1 LO',''],
-  [3,3,'4B','26'],[3,5,'6B','24'],[3,6,'6A','35'],[3,7,'1 LO','23'],
-  [4,2,'5B','32'],[4,3,'6A','24'],[4,4,'2 LO','24'],[4,5,'4B','36'],[4,6,'1 LO','36']
+ [0,2,'6B','23'],[0,3,'4B','34'],[0,4,'6A','38'],[0,5,'5B','24'],[0,7,'2 LO','39'],
+ [1,3,'6B','23'],[1,4,'4B','37'],[1,5,'5B','32'],[1,6,'2 LO','36'],[1,7,'6A','9'],
+ [2,3,'6A','37'],[2,4,'4B','37'],[2,5,'5B','9'],[2,6,'6B','35'],[2,7,'2 LO','38','godzina wychowawcza'],[2,8,'1 LO',''],
+ [3,3,'4B','26'],[3,5,'6B','24'],[3,6,'6A','35'],[3,7,'1 LO','23'],
+ [4,2,'5B','32'],[4,3,'6A','24'],[4,4,'2 LO','24'],[4,5,'4B','36'],[4,6,'1 LO','36']
 ];
 
 let S={plan:{lessons:[],duties:[]},tests:[],items:[],ideas:[]};
 let view='dzis', planDay=0, fIdea='wszystkie';
-let calT={y:new Date().getFullYear(),m:new Date().getMonth()};
-let calZ={y:new Date().getFullYear(),m:new Date().getMonth()};
+let calK={y:new Date().getFullYear(),m:new Date().getMonth()};
 
 /* ================= zapis w Supabase ================= */
 async function getKey(k,def){
@@ -301,7 +370,7 @@ async function setKey(k,v){
   }catch(e){toast('Nie udało się zapisać')}
 }
 const save={plan:()=>setKey('planer:plan',S.plan),tests:()=>setKey('planer:tests',S.tests),
-items:()=>setKey('planer:items',S.items),ideas:()=>setKey('planer:ideas',S.ideas)};
+  items:()=>setKey('planer:items',S.items),ideas:()=>setKey('planer:ideas',S.ideas)};
 
 /* ================= narzędzia ================= */
 const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,7);
@@ -314,29 +383,75 @@ function dft(s){return Math.round((parseISO(s)-parseISO(isoToday()))/86400000)}
 function fmtD(s){const d=parseISO(s);return `${d.getDate()} ${MON[d.getMonth()]}`}
 function relD(s){const n=dft(s);return n===0?'dziś':n===1?'jutro':n===-1?'wczoraj':n<0?`${-n} dni temu`:`za ${n} dni`}
 function toast(t){const e=document.getElementById('toast');e.textContent=t;e.classList.add('on');
-clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove('on'),1800)}
-function klPill(k){return `<span class="pill k" style="background:${CCOL[k]||'#5A6880'}">${esc(k)}</span>`}
+  clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove('on'),1800)}
+function klPill(k){return `<span class="pill k" style="background:${CCOL[k]||'#8C7A63'}">${esc(k)}</span>`}
 function todayIdx(){const w=new Date().getDay();return (w>=1&&w<=5)?w-1:-1}
-function breaks(day){
-  const ls=S.plan.lessons.filter(l=>l.day===day).sort((a,b)=>a.slot-b.slot);
-  const out=[];
-  for(let i=0;i<ls.length-1;i++){
-    out.push({after:ls[i].slot,next:ls[i+1].slot,from:SL(ls[i].slot).b,to:SL(ls[i+1].slot).a});
-  }
-  return out;
-}
+function dateDayIdx(dateStr){if(!dateStr)return null;const w=parseISO(dateStr).getDay();return (w>=1&&w<=5)?w-1:null}
 function dutyAt(day,after){return S.plan.duties.find(d=>d.day===day&&Number(d.after)===Number(after))}
+function testColor(t){
+  if(t.type==='poprawa')return KCOL.poprawa;
+  if(t.type==='projekt')return KCOL.projekt;
+  return KCOL.sprawdzian;
+}
+function entryColor(x){return x._kind==='test'?testColor(x):KCOL[x.type]}
+function entryLabel(x){
+  if(x._kind==='test'){
+    const who=x.mode==='uczen'?x.student:x.kl;
+    return who+' '+x.type+(x.dzial?' - '+x.dzial:'');
+  }
+  return (x.type==='wydarzenie'&&x.time?x.time+' ':'')+x.text;
+}
 
+/* pełny rozkład dnia: lekcje + okienka + przerwy, bez pomijania wolnych godzin */
+function daySchedule(day){
+  const ls=S.plan.lessons.filter(l=>l.day===day);
+  if(!ls.length)return [];
+  const bySlot={};ls.forEach(l=>bySlot[l.slot]=l);
+  const nums=Object.keys(bySlot).map(Number);
+  const lo=Math.min(...nums), hi=Math.max(...nums);
+  const rows=[];
+  for(let n=lo;n<=hi;n++){
+    rows.push(bySlot[n]?{type:'lesson',...bySlot[n]}:{type:'okienko',slot:n});
+    if(n<hi)rows.push({type:'brk',after:n,from:SL(n).b,to:SL(n+1).a});
+  }
+  return rows;
+}
+/* godzina lekcyjna sprawdzianu: albo ustawiona ręcznie, albo wyliczona z planu klasy */
+function resolveSlot(t){
+  if(t.slotMode==='manual')return t.slotManual!=null?Number(t.slotManual):null;
+  if(!t.kl)return null;
+  const di=dateDayIdx(t.date);
+  if(di==null)return null;
+  const found=S.plan.lessons.find(l=>l.day===di&&l.kl===t.kl);
+  return found?found.slot:null;
+}
+function testWho(t){
+  if(t.mode==='uczen'){
+    return `<span class="pill">${esc(t.student)}</span>${t.kl?' '+klPill(t.kl):''}`;
+  }
+  return klPill(t.kl);
+}
+function dayEntries(ds){
+  const t=S.tests.filter(x=>x.date===ds).map(x=>({...x,_kind:'test'}));
+  const it=S.items.filter(x=>x.date===ds).map(x=>({...x,_kind:'item'}));
+  return [...t,...it];
+}
+function monthEntries(y,m){
+  const t=S.tests.filter(x=>{const d=parseISO(x.date);return d.getFullYear()===y&&d.getMonth()===m}).map(x=>({...x,_kind:'test'}));
+  const it=S.items.filter(x=>{const d=parseISO(x.date);return d.getFullYear()===y&&d.getMonth()===m}).map(x=>({...x,_kind:'item'}));
+  return [...t,...it].sort((a,b)=>a.date.localeCompare(b.date));
+}
+
+/* ================= nawigacja ================= */
 const NAV=[
-  ['dzis','Dziś','M3 10.5 12 3l9 7.5M5 9.5V20h14V9.5'],
-  ['plan','Plan','M4 5h16v15H4zM4 9.5h16M9 9.5V20M14.5 9.5V20'],
-  ['testy','Sprawdziany','M4 5h16v15H4zM4 9.5h16M8 3v4M16 3v4M8.5 14h2M13.5 14h2'],
-  ['zadania','Zadania','M4 6h10M4 12h13M4 18h8M18.5 5.5l2.5 2.5-6 6-3 .5.5-3z'],
-  ['pomysly','Pomysły','M9 20h6M10 23h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z']
+ ['dzis','Dziś','M3 10.5 12 3l9 7.5M5 9.5V20h14V9.5'],
+ ['plan','Plan','M4 5h16v15H4zM4 9.5h16M9 9.5V20M14.5 9.5V20'],
+ ['kalendarz','Kalendarz','M4 5h16v15H4zM4 9.5h16M8 3v4M16 3v4M8.5 14h2M13.5 14h2'],
+ ['pomysly','Pomysły','M9 20h6M10 23h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z']
 ];
 function buildNav(){
   document.getElementById('nav').innerHTML=NAV.map(([id,l,d])=>
-    `<button data-v="${id}" aria-pressed="${view===id}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="${d}"/></svg><span>${l}</span></button>`).join('');
+   `<button data-v="${id}" aria-pressed="${view===id}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="${d}"/></svg><span>${l}</span></button>`).join('');
 }
 function summary(){
   const di=todayIdx();
@@ -353,17 +468,19 @@ function go(v){
   document.querySelectorAll('#nav button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.v===v));
   const d=new Date();
   const H={plan:['PLAN STAŁY','Plan lekcji','Dzwonki, sale i dyżury na przerwach'],
-    testy:['MATEMATYKA','Sprawdziany','Kalendarz kartkówek i sprawdzianów'],
-    zadania:['MATEMATYKA','Zadania i wydarzenia','Kalendarz miesiąca'],
+    kalendarz:['MATEMATYKA','Kalendarz','Sprawdziany, wydarzenia i zadania w jednym miejscu'],
     pomysly:['MATEMATYKA','Pomysły na lekcje','Uporządkowane działami']};
+  const qEl=document.getElementById('quote');
   if(v==='dzis'){
     document.getElementById('eyebrow').textContent=(DAYS[todayIdx()]||(d.getDay()===6?'Sobota':'Niedziela')).toUpperCase();
     document.getElementById('title').textContent=`${d.getDate()} ${MON[d.getMonth()]}`;
     document.getElementById('subtitle').textContent=summary();
+    qEl.textContent=todayQuote();
   }else{
     document.getElementById('eyebrow').textContent=H[v][0];
     document.getElementById('title').textContent=H[v][1];
     document.getElementById('subtitle').textContent=H[v][2];
+    qEl.textContent='';
   }
   render();window.scrollTo({top:0,behavior:'instant'});
 }
@@ -371,171 +488,209 @@ function go(v){
 /* ---------- DZIS ---------- */
 function renderToday(){
   const di=todayIdx(), td=isoToday();
+  const testsToday=S.tests.filter(t=>t.date===td);
   let L='';
   if(di<0){
     L=`<div class="empty" style="padding:18px 10px"><p style="font-size:13px">Weekend</p><span>Bez lekcji.</span></div>`;
   }else{
-    const ls=S.plan.lessons.filter(l=>l.day===di).sort((a,b)=>a.slot-b.slot);
-    if(!ls.length){
+    const rows=daySchedule(di);
+    if(!rows.length){
       L=`<div class="empty" style="padding:18px 10px"><p style="font-size:13px">Brak lekcji</p><span>Uzupełnij plan.</span></div>`;
     }else{
-      const brs=breaks(di);
       L='<div class="tl">';
-      ls.forEach(l=>{
-        const s=SL(l.slot), wy=l.kind==='godzina wychowawcza';
-        L+=`<div class="tlrow"><span class="n">${l.slot}</span>
-        <div class="les ${wy?'wych':''}" style="border-left-color:${CCOL[l.kl]}">
-        <span class="kl" style="color:${CCOL[l.kl]}">${esc(l.kl)}</span>
-        ${wy?'<span class="tag">godz. wych.</span>':''}
-        <span class="hh">${s.a}–${s.b}</span>
-        ${l.room?`<span class="rr">sala ${esc(l.room)}</span>`:''}
-        </div></div>`;
-        const br=brs.find(b=>b.after===l.slot);
-        if(br){
-          const du=dutyAt(di,br.after);
+      rows.forEach(row=>{
+        if(row.type==='lesson'){
+          const s=SL(row.slot), wy=row.kind==='godzina wychowawcza';
+          const test=testsToday.find(t=>resolveSlot(t)===row.slot);
+          L+=`<div class="tlrow"><span class="n">${row.slot}</span>
+            <div class="les ${wy?'wych':''}" style="border-left-color:${CCOL[row.kl]}">
+              <span class="kl" style="color:${CCOL[row.kl]}">${esc(row.kl)}</span>
+              ${wy?'<span class="tag">godz. wych.</span>':''}
+              <span class="hh">${s.a}–${s.b}</span>
+              ${row.room?`<span class="rr">sala ${esc(row.room)}</span>`:''}
+              ${test?`<span class="testbadge" style="background:${testColor(test)}">${esc(test.type)}${test.dzial?' · '+esc(test.dzial):''}${test.mode==='uczen'?' · '+esc(test.student):''}</span>`:''}
+            </div></div>`;
+        }else if(row.type==='okienko'){
+          const s=SL(row.slot);
+          const test=testsToday.find(t=>resolveSlot(t)===row.slot);
+          L+=`<div class="tlrow"><span class="n">${row.slot}</span>
+            <div class="les okienko">
+              <span class="kl">okienko</span>
+              <span class="hh">${s.a}–${s.b}</span>
+              ${test?`<span class="testbadge" style="background:${testColor(test)}">${esc(test.type)}${test.dzial?' · '+esc(test.dzial):''}${test.mode==='uczen'?' · '+esc(test.student):''}</span>`:''}
+            </div></div>`;
+        }else{
+          const du=dutyAt(di,row.after);
           L+=`<div class="brk">${du?`<b>Dyżur · ${esc(du.place)}</b>`
-            :`<button class="lnk" data-setduty="${di}-${br.after}">+ wpisz dyżur</button>`}
-            ${br.from}–${br.to}</div>`;
+            :`<button class="lnk" data-setduty="${di}-${row.after}">+ wpisz dyżur</button>`}
+            ${row.from}–${row.to}</div>`;
         }
       });
       L+='</div>';
     }
   }
-  const tst=S.tests.filter(t=>t.date===td).sort((a,b)=>(a.kl||'').localeCompare(b.kl||''));
+
   const late=S.items.filter(x=>x.type==='zadanie'&&!x.done&&x.date&&dft(x.date)<0);
   const itm=S.items.filter(x=>x.date===td);
-  let R=`<div class="pad"><div class="tear"></div><div class="padin">
-  <h3>Dziś sprawdzam / pytam</h3><hr>`;
-  R+= tst.length ? tst.map(t=>`<div class="pitem"><span class="dot" style="background:${CCOL[t.kl]}"></span>
-    <span class="tx"><span class="kk" style="color:${CCOL[t.kl]}">${esc(t.kl)}</span> ${esc(t.type)}${t.dzial?' — '+esc(t.dzial):''}</span></div>`).join('')
-    : `<div class="pnone">nic na dziś</div>`;
-  R+=`<h3 style="margin-top:6px">Do zrobienia</h3><hr>`;
-  const all=[...late.map(x=>({...x,_late:true})),...itm.filter(x=>!late.some(l=>l.id===x.id))];
-  all.sort((a,b)=>(a.type==='wydarzenie')-(b.type==='wydarzenie'));
-  R+= all.length ? all.map(x=>
-    x.type==='wydarzenie'
-    ? `<div class="pitem"><span class="dot" style="background:${TCOL.wydarzenie}"></span><span class="tx">${esc(x.text)}</span></div>`
-    : `<div class="pitem ${x.done?'done':''}">
+  const todoAll=[...late.map(x=>({...x,_late:true})),...itm.filter(x=>!late.some(l=>l.id===x.id))];
+  todoAll.sort((a,b)=>(a.type==='wydarzenie')-(b.type==='wydarzenie'));
+
+  let R=`<div class="notecard"><div class="note-sec"><div class="note-h">Dziś sprawdzam / pytam</div>`;
+  R+= testsToday.length ? testsToday.map(t=>{
+      const label=(t.mode==='uczen'?t.student:t.kl)+' — '+t.type+(t.dzial?' · '+t.dzial:'');
+      return `<div class="ntile" style="background:${testColor(t)}">${esc(label)}</div>`;
+    }).join('')
+    : `<div class="nnone">nic na dziś</div>`;
+  R+=`</div><div class="note-sec"><div class="note-h">Do zrobienia</div>`;
+  R+= todoAll.length ? todoAll.map(x=>{
+      if(x.type==='wydarzenie'){
+        const label=(x.time?x.time+' — ':'')+x.text;
+        return `<div class="ntile" style="background:${KCOL.wydarzenie}">${esc(label)}</div>`;
+      }
+      return `<div class="nrow ${x.done?'done':''}">
         <button class="sq" aria-pressed="${!!x.done}" data-toggle="${x.id}" aria-label="Odhacz">
-        <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:${x.done?1:0}"><path d="M4 12.5 9.5 18 20 6.5"/></svg></button>
-        <span class="tx">${esc(x.text)}${x._late?` <span style="color:var(--red);font-size:10.5px">${relD(x.date)}</span>`:''}</span></div>`
-  ).join('') : `<div class="pnone">pusto</div>`;
+          <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:${x.done?1:0}"><path d="M4 12.5 9.5 18 20 6.5"/></svg></button>
+        <span class="tx">${esc(x.text)}${x._late?` <span style="color:var(--red);font-size:11px;font-weight:700">${relD(x.date)}</span>`:''}</span></div>`;
+    }).join('')
+    : `<div class="nnone">pusto</div>`;
   R+=`</div></div>`;
+
   document.getElementById('today-body').innerHTML=
     `<div class="split">
       <div><div class="colhead">Plan dnia + dyżury</div>${L}</div>
       <div><div class="colhead">Notatnik</div>${R}</div>
-    </div>`;
+     </div>`;
 }
 
 /* ---------- PLAN ---------- */
 function renderPlan(){
   document.getElementById('plan-seg').innerHTML=
     DAYS.map((d,i)=>`<button data-pd="${i}" aria-pressed="${planDay===i}">${d}</button>`).join('');
-  const ls=S.plan.lessons.filter(l=>l.day===planDay).sort((a,b)=>a.slot-b.slot);
-  const brs=breaks(planDay);
+  const rows=daySchedule(planDay);
   let h=`<table class="ptab"><thead><tr><th>Nr</th><th>Godziny</th><th>Klasa</th><th>Rodzaj</th><th>Sala</th><th></th></tr></thead><tbody>`;
-  if(!ls.length) h+=`<tr><td colspan="6" style="text-align:center;color:var(--ink-faint);padding:22px">Brak lekcji w tym dniu</td></tr>`;
-  ls.forEach(l=>{
-    const s=SL(l.slot);
-    h+=`<tr><td class="nn">${l.slot}</td><td class="gg">${s.a}–${s.b}</td>
-    <td><span class="klx" style="color:${CCOL[l.kl]}">${esc(l.kl)}</span></td>
-    <td class="kind">${esc(l.kind||'matematyka')}</td>
-    <td class="gg">${esc(l.room||'—')}</td>
-    <td style="text-align:right"><button class="pill btn" data-edit-les="${l.id}">edytuj</button></td></tr>`;
-    const br=brs.find(b=>b.after===l.slot);
-    if(br){
-      const du=dutyAt(planDay,br.after);
-      h+=`<tr class="br"><td></td><td class="gg">${br.from}–${br.to}</td>
-      <td colspan="3">${du?`<span class="dz">Dyżur · ${esc(du.place)}</span>`:`<span class="todo">dyżur — do uzupełnienia</span>`}</td>
-      <td style="text-align:right"><button class="pill btn" data-setduty="${planDay}-${br.after}">${du?'zmień':'wpisz'}</button></td></tr>`;
+  if(!rows.length) h+=`<tr><td colspan="6" style="text-align:center;color:var(--ink-faint);padding:22px">Brak lekcji w tym dniu</td></tr>`;
+  rows.forEach(row=>{
+    if(row.type==='lesson'){
+      const s=SL(row.slot);
+      h+=`<tr><td class="nn">${row.slot}</td><td class="gg">${s.a}–${s.b}</td>
+        <td><span class="klx" style="color:${CCOL[row.kl]}">${esc(row.kl)}</span></td>
+        <td class="kind">${esc(row.kind||'matematyka')}</td>
+        <td class="gg">${esc(row.room||'—')}</td>
+        <td style="text-align:right"><button class="pill btn" data-edit-les="${row.id}">edytuj</button></td></tr>`;
+    }else if(row.type==='okienko'){
+      const s=SL(row.slot);
+      h+=`<tr class="ok"><td class="nn">${row.slot}</td><td class="gg">${s.a}–${s.b}</td>
+        <td colspan="2" style="font-style:italic">okienko</td><td class="gg">—</td>
+        <td style="text-align:right"><button class="pill btn" data-addlesslot="${planDay}-${row.slot}">+ lekcja</button></td></tr>`;
+    }else{
+      const du=dutyAt(planDay,row.after);
+      h+=`<tr class="br"><td></td><td class="gg">${row.from}–${row.to}</td>
+        <td colspan="3">${du?`<span class="dz">Dyżur · ${esc(du.place)}</span>`:`<span class="todo">dyżur — do uzupełnienia</span>`}</td>
+        <td style="text-align:right"><button class="pill btn" data-setduty="${planDay}-${row.after}">${du?'zmień':'wpisz'}</button></td></tr>`;
     }
   });
   h+=`</tbody></table>
-  <button class="add" data-addles="${planDay}">+ Dodaj lekcję w ${DAYS[planDay].toLowerCase()}</button>
-  <p class="meta" style="margin-top:8px">Przerwy wyliczają się z godzin dzwonków. Dyżur wpisujesz w różowy wiersz przerwy.</p>`;
+    <button class="add" data-addles="${planDay}">+ Dodaj lekcję w ${DAYS[planDay].toLowerCase()}</button>
+    <p class="meta" style="margin-top:8px">Wolne godziny w środku dnia pokazują się jako okienka. Dyżur wpisujesz w wiersz przerwy.</p>`;
   document.getElementById('plan-body').innerHTML=h;
 }
 
-/* ---------- kalendarz ---------- */
+/* ---------- kalendarz: pasek tygodnia ---------- */
+function weekStripDates(){
+  const now=new Date();
+  const dow=(now.getDay()+6)%7;
+  const mon=new Date(now);mon.setDate(now.getDate()-dow);
+  return Array.from({length:7},(_,i)=>{const d=new Date(mon);d.setDate(mon.getDate()+i);return d});
+}
+function renderWeekStrip(){
+  const days=weekStripDates();
+  let h='<div class="weekstrip">';
+  days.forEach((d,i)=>{
+    const ds=iso(d);
+    const list=dayEntries(ds);
+    const wk=i>=5;
+    const tiles=list.map(x=>`<div class="wtile" style="background:${entryColor(x)}">${esc(entryLabel(x))}</div>`).join('');
+    h+=`<button class="wcell ${wk?'wk':''} ${ds===isoToday()?'today':''}" data-day="${ds}">
+      <span class="wdh">${DSH[i]}</span><span class="wdn">${d.getDate()}</span>
+      <div class="wtiles">${tiles}</div></button>`;
+  });
+  return h+'</div>';
+}
+
+/* ---------- kalendarz: siatka miesiąca ---------- */
 function monthGrid(y,m,fill){
   const start=(new Date(y,m,1).getDay()+6)%7;
-  const dim=new Date(y,m+1,0).getDate(), dimPrev=new Date(y,m,0).getDate();
+  const dim=new Date(y,m+1,0).getDate();
   const cells=[];
-  for(let i=start-1;i>=0;i--)cells.push({d:dimPrev-i,off:true});
+  for(let i=0;i<start;i++)cells.push({off:true});
   for(let d=1;d<=dim;d++)cells.push({d,off:false});
-  while(cells.length%7)cells.push({d:0,off:true});
+  while(cells.length%7)cells.push({off:true});
   let h=`<div class="calgrid">`+DSH.map(d=>`<div class="dh">${d}</div>`).join('')+`</div><div class="calgrid">`;
   cells.forEach((c,i)=>{
-    if(c.off){h+=`<div class="cell off"><span class="dn">${c.d||''}</span></div>`;return}
+    if(c.off){h+=`<div class="cell off"></div>`;return}
     const ds=`${y}-${pad2(m+1)}-${pad2(c.d)}`, wk=(i%7)>=5;
     h+=`<button class="cell ${wk?'wknd':''} ${ds===isoToday()?'today':''}" data-day="${ds}">
-    <span class="dn">${c.d}</span>${fill(ds)}</button>`;
+      <span class="dn">${c.d}</span>${fill(ds)}</button>`;
   });
   return h+`</div>`;
 }
-function calHead(st,label){
-  return `<div class="calbar"><button data-cal="${st}:-1" aria-label="Poprzedni miesiąc">‹</button>
-  <h2>${label}</h2><button data-cal="${st}:1" aria-label="Następny miesiąc">›</button></div>`;
+function calHead(label){
+  return `<div class="calbar"><button data-cal="-1" aria-label="Poprzedni miesiąc">‹</button>
+    <h2>${label}</h2><button data-cal="1" aria-label="Następny miesiąc">›</button></div>`;
 }
 
-/* ---------- SPRAWDZIANY ---------- */
-function renderTesty(){
-  const {y,m}=calT;
-  const fill=ds=>{
-    const t=S.tests.filter(x=>x.date===ds);
-    if(!t.length)return '';
-    return t.slice(0,2).map(x=>`<span class="ch" style="background:${CCOL[x.kl]}">${esc(x.kl)}</span>`).join('')
-      +(t.length>2?`<span class="more">+${t.length-2}</span>`:'');
-  };
-  let h=`<div class="cal">${calHead('T',MONN[m]+' '+y)}${monthGrid(y,m,fill)}
-  <div class="legend">${CLASSES.map(c=>`<span><i style="background:${CCOL[c]}"></i>${c}</span>`).join('')}</div></div>`;
-  const mth=S.tests.filter(t=>{const d=parseISO(t.date);return d.getFullYear()===y&&d.getMonth()===m})
-    .sort((a,b)=>a.date.localeCompare(b.date));
-  h+=`<div class="lbl">${MONN[m]} — lista</div>`;
-  h+= mth.length ? mth.map(t=>{
-    const stc={'zapowiedziany':'#5A6880','przeprowadzony':'#B4720E','sprawdzony':'#2F4FCF','oceny wpisane':'#22795A'}[t.status];
-    return `<div class="card"><div class="row"><div class="grow">
-    <div class="ttl">${esc(t.dzial||t.type)}</div>
-    <div class="meta">${klPill(t.kl)} <span class="pill">${esc(t.type)}</span> <span class="pill" style="color:${stc}">${esc(t.status)}</span></div>
-    ${t.zakres?`<div class="meta">${esc(t.zakres)}</div>`:''}
-    <div class="meta">${fmtD(t.date)} · ${relD(t.date)}</div></div>
-    <button class="pill btn" data-edit-test="${t.id}">edytuj</button></div></div>`}).join('')
-    : `<div class="empty"><p>Brak terminów w tym miesiącu.</p><span>Dotknij dzień w kalendarzu, żeby dodać.</span></div>`;
-  h+=`<button class="add" data-open="test">+ Nowy sprawdzian lub kartkówka</button>`;
-  document.getElementById('testy-body').innerHTML=h;
-}
-
-/* ---------- ZADANIA / WYDARZENIA ---------- */
-function renderZadania(){
-  const {y,m}=calZ;
-  const fill=ds=>{
-    const it=S.items.filter(x=>x.date===ds);
-    if(!it.length)return '';
-    const first=it[0];
-    return `<span class="dots">`+it.slice(0,6).map(x=>
-      `<span class="dt" style="background:${TCOL[x.type]};${x.done?'opacity:.3':''}"></span>`).join('')+`</span>`
-      +`<span class="ch" style="background:${TCOL[first.type]};${first.done?'opacity:.45':''}">${esc(first.text)}</span>`
-      +(it.length>1?`<span class="more">+${it.length-1}</span>`:'');
-  };
-  let h=`<div class="cal">${calHead('Z',MONN[m]+' '+y)}${monthGrid(y,m,fill)}
-  <div class="legend"><span><i style="background:${TCOL.zadanie}"></i>zadanie</span>
-  <span><i style="background:${TCOL.wydarzenie}"></i>wydarzenie</span></div></div>`;
-  const mth=S.items.filter(x=>{const d=parseISO(x.date);return d.getFullYear()===y&&d.getMonth()===m})
-    .sort((a,b)=>a.date.localeCompare(b.date));
-  h+=`<div class="lbl">${MONN[m]} — lista</div>`;
-  h+= mth.length ? mth.map(x=>`<div class="card"><div class="row">
-    ${x.type==='zadanie'
-      ? `<button aria-pressed="${!!x.done}" data-toggle="${x.id}" aria-label="Odhacz" style="width:20px;height:20px;border-radius:6px;border:2px solid ${x.done?'#22795A':'#D3DEEC'};background:${x.done?'#22795A':'#fff'};display:grid;place-items:center;flex:0 0 auto;margin-top:2px"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" style="opacity:${x.done?1:0}"><path d="M4 12.5 9.5 18 20 6.5"/></svg></button>`
-      : `<span style="width:20px;height:20px;border-radius:99px;background:${TCOL.wydarzenie};flex:0 0 auto;margin-top:2px"></span>`}
+/* ---------- kalendarz: karta wpisu ---------- */
+function renderEntryCard(x){
+  const c=entryColor(x);
+  if(x._kind==='test'){
+    const stc={'zapowiedziany':'#8C7A63','przeprowadzony':'#C1832A','sprawdzony':'#1F8080','oceny wpisane':'#4C8C3D'}[x.status];
+    const slot=resolveSlot(x);
+    return `<div class="card" style="border-left:4px solid ${c}"><div class="row"><div class="grow">
+      <div class="ttl">${x.mode==='uczen'?esc(x.student):esc(x.dzial||x.type)}</div>
+      <div class="meta">${testWho(x)} <span class="pill">${esc(x.type)}</span> <span class="pill" style="color:${stc}">${esc(x.status)}</span>${slot!=null?` <span class="pill">${slot}. lekcja</span>`:''}</div>
+      ${x.mode==='uczen'&&x.dzial?`<div class="meta">${esc(x.dzial)}</div>`:''}
+      ${x.zakres?`<div class="meta">${esc(x.zakres)}</div>`:''}
+      <div class="meta">${fmtD(x.date)} · ${relD(x.date)}</div></div>
+      <button class="pill btn" data-edit-test="${x.id}">edytuj</button></div></div>`;
+  }
+  const isTask=x.type==='zadanie';
+  return `<div class="card" style="border-left:4px solid ${c}"><div class="row">
+    ${isTask
+      ? `<button aria-pressed="${!!x.done}" data-toggle="${x.id}" aria-label="Odhacz" style="width:20px;height:20px;border-radius:6px;border:2px solid ${x.done?'#4C8C3D':'#D3C6AC'};background:${x.done?'#4C8C3D':'#fff'};display:grid;place-items:center;flex:0 0 auto;margin-top:2px"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" style="opacity:${x.done?1:0}"><path d="M4 12.5 9.5 18 20 6.5"/></svg></button>`
+      : `<span style="width:20px;height:20px;border-radius:99px;background:${KCOL.wydarzenie};flex:0 0 auto;margin-top:2px"></span>`}
     <div class="grow"><div class="ttl" style="${x.done?'text-decoration:line-through;color:var(--ink-soft)':''}">${esc(x.text)}</div>
-    <div class="meta"><span class="pill" style="color:${TCOL[x.type]}">${esc(x.type)}</span>
-    ${x.type==='zadanie'?`<span class="pill" style="color:${PCOL[x.prio]}">${esc(x.prio)}</span>`:''}
-    ${esc(x.cat||'')} · ${fmtD(x.date)}, ${relD(x.date)}</div></div>
-    <button class="pill btn" data-edit-item="${x.id}">edytuj</button></div></div>`).join('')
+    <div class="meta"><span class="pill" style="color:${c}">${esc(x.type)}</span>
+      ${isTask?`<span class="pill" style="color:${PCOL[x.prio]}">${esc(x.prio)}</span>`:''}
+      ${x.time?`<span class="pill">${esc(x.time)}</span>`:''}
+      ${esc(x.cat||'')} · ${fmtD(x.date)}, ${relD(x.date)}</div>
+      ${x.desc?`<div class="meta">${esc(x.desc)}</div>`:''}</div>
+    <button class="pill btn" data-edit-item="${x.id}">edytuj</button></div></div>`;
+}
+
+function renderKalendarz(){
+  const {y,m}=calK;
+  const fill=ds=>{
+    const list=dayEntries(ds);
+    if(!list.length)return '';
+    return list.map(x=>`<div class="ctile" style="background:${entryColor(x)}">${esc(entryLabel(x))}</div>`).join('');
+  };
+  let h=renderWeekStrip();
+  h+=`<div class="cal">${calHead(MONN[m]+' '+y)}${monthGrid(y,m,fill)}
+    <div class="legend">
+      <span><i style="background:${KCOL.sprawdzian}"></i>sprawdzian / kartkówka</span>
+      <span><i style="background:${KCOL.poprawa}"></i>poprawa</span>
+      <span><i style="background:${KCOL.projekt}"></i>projekt</span>
+      <span><i style="background:${KCOL.wydarzenie}"></i>wydarzenie</span>
+      <span><i style="background:${KCOL.zadanie}"></i>zadanie</span>
+    </div></div>`;
+  const mth=monthEntries(y,m);
+  h+=`<div class="lbl">${MONN[m]} — lista</div>`;
+  h+= mth.length ? mth.map(renderEntryCard).join('')
     : `<div class="empty"><p>Nic w tym miesiącu.</p><span>Dotknij dzień w kalendarzu, żeby dodać.</span></div>`;
-  h+=`<button class="add" data-open="item">+ Nowe zadanie lub wydarzenie</button>`;
-  document.getElementById('zadania-body').innerHTML=h;
+  h+=`<button class="add" data-open="test" style="border-color:${KCOL.sprawdzian};color:${KCOL.sprawdzian}">+ Nowy sprawdzian lub kartkówka</button>`;
+  h+=`<button class="add" data-open="event" style="border-color:${KCOL.wydarzenie};color:${KCOL.wydarzenie}">+ Nowe wydarzenie</button>`;
+  h+=`<button class="add" data-open="task" style="border-color:${KCOL.zadanie};color:${KCOL.zadanie}">+ Nowe zadanie</button>`;
+  document.getElementById('kalendarz-body').innerHTML=h;
 }
 
 /* ---------- POMYSŁY ---------- */
@@ -546,18 +701,18 @@ function renderIdeas(){
     .sort((a,b)=>(a.dzial||'').localeCompare(b.dzial||'')||((a.nr||99)-(b.nr||99)));
   const el=document.getElementById('idea-body');
   if(!list.length){el.innerHTML=`<div class="empty"><p>Pusto — na razie.</p><span>Zapisz pierwszy pomysł, zanim uleci.</span></div>`;return}
-  let h='',last=null;
+  let h='',last='\u0000';
   list.forEach(i=>{
     const d=i.dzial||'Bez działu';
     if(d!==last){h+=`<div class="lbl">${esc(d)}</div>`;last=d}
-    const stc={'pomysł':'#5A6880','gotowe':'#2F4FCF','przeprowadzone':'#22795A'}[i.status];
+    const stc={'pomysł':'#8C7A63','gotowe':'#1F8080','przeprowadzone':'#4C8C3D'}[i.status];
     h+=`<div class="card"><div class="row">
-    <div style="font-family:'Space Mono',monospace;font-weight:700;font-size:16px;color:${CCOL[i.kl]};min-width:22px;text-align:center">${i.nr||'–'}</div>
-    <div class="grow"><div class="ttl">${esc(i.temat)}</div>
-    <div class="meta">${klPill(i.kl)} <span class="pill" style="color:${stc}">${esc(i.status)}</span></div>
-    ${i.metoda?`<div class="meta">Metoda: ${esc(i.metoda)}</div>`:''}
-    ${i.mat?`<div class="meta">Materiały: ${esc(i.mat)}</div>`:''}</div>
-    <button class="pill btn" data-edit-idea="${i.id}">edytuj</button></div></div>`;
+      <div style="font-family:'Space Mono',monospace;font-weight:700;font-size:16px;color:${CCOL[i.kl]};min-width:22px;text-align:center">${i.nr||'–'}</div>
+      <div class="grow"><div class="ttl">${esc(i.temat)}</div>
+      <div class="meta">${klPill(i.kl)} <span class="pill" style="color:${stc}">${esc(i.status)}</span></div>
+      ${i.metoda?`<div class="meta">Metoda: ${esc(i.metoda)}</div>`:''}
+      ${i.mat?`<div class="meta">Materiały: ${esc(i.mat)}</div>`:''}</div>
+      <button class="pill btn" data-edit-idea="${i.id}">edytuj</button></div></div>`;
   });
   el.innerHTML=h;
 }
@@ -565,8 +720,7 @@ function renderIdeas(){
 function render(){
   if(view==='dzis'){renderToday();document.getElementById('subtitle').textContent=summary()}
   if(view==='plan')renderPlan();
-  if(view==='testy')renderTesty();
-  if(view==='zadania')renderZadania();
+  if(view==='kalendarz')renderKalendarz();
   if(view==='pomysly')renderIdeas();
 }
 
@@ -578,132 +732,176 @@ function openSheet(html,onSave){
   requestAnimationFrame(()=>document.getElementById('sheet').classList.add('on'));
 }
 function closeSheet(){document.getElementById('sheet').classList.remove('on');
-document.getElementById('scrim').classList.remove('on');sheetSave=null}
+  document.getElementById('scrim').classList.remove('on');sheetSave=null}
 function chipRow(n,o,c){return `<div class="chips" data-chips="${n}">`+o.map(x=>
   `<button type="button" data-val="${esc(x)}" aria-pressed="${x===c}">${esc(x)}</button>`).join('')+`</div>`}
 function chipVal(n){const w=document.querySelector(`[data-chips="${n}"] [aria-pressed="true"]`);return w?w.dataset.val:''}
 function acts(del){return `<div class="sheet-actions"><button class="btn ghost" type="button" data-close>Anuluj</button>
-${del?'<button class="btn danger" type="button" data-del>Usuń</button>':''}
-<button class="btn primary" type="button" data-save>Zapisz</button></div>`}
+  ${del?'<button class="btn danger" type="button" data-del>Usuń</button>':''}
+  <button class="btn primary" type="button" data-save>Zapisz</button></div>`}
 function bindDel(fn){const b=document.querySelector('[data-del]');if(b)b.addEventListener('click',fn)}
 
-function sheetLesson(id,day){
+function sheetLesson(id,day,presetSlot){
   const ex=S.plan.lessons.find(l=>l.id===id);
   const d=ex?ex.day:day;
+  const slotDefault=ex?String(ex.slot):(presetSlot!=null?String(presetSlot):'');
   openSheet(`<h2>${ex?'Edytuj lekcję':'Nowa lekcja'} — ${DAYS[d]}</h2>
-  <div class="f"><label>Numer lekcji</label>${chipRow('slot',SLOTS.map(s=>String(s.n)),ex?String(ex.slot):'')}</div>
-  <div class="f"><label>Klasa</label>${chipRow('kl',CLASSES,ex?ex.kl:'')}</div>
-  <div class="f"><label>Rodzaj lekcji</label>${chipRow('kind',KINDS,ex?(ex.kind||'matematyka'):'matematyka')}</div>
-  <div class="f"><label>Sala</label><input id="i-room" value="${ex?esc(ex.room):''}" placeholder="np. 23"></div>
-  ${acts(!!ex)}`,()=>{
-    const sv=chipVal('slot'), kl=chipVal('kl');
-    if(sv===''||!kl)return toast('Wybierz numer lekcji i klasę');
-    const slot=Number(sv);
-    const o={id:ex?ex.id:uid(),day:d,slot,kl,kind:chipVal('kind')||'matematyka',
-      room:document.getElementById('i-room').value.trim()};
-    S.plan.lessons=S.plan.lessons.filter(l=>l.id!==o.id&&!(l.day===d&&l.slot===slot));
-    S.plan.lessons.push(o);save.plan();closeSheet();render();toast('Zapisano');
-  });
+    <div class="f"><label>Numer lekcji</label>${chipRow('slot',SLOTS.map(s=>String(s.n)),slotDefault)}</div>
+    <div class="f"><label>Klasa</label>${chipRow('kl',CLASSES,ex?ex.kl:'')}</div>
+    <div class="f"><label>Rodzaj lekcji</label>${chipRow('kind',KIND_LESSON,ex?(ex.kind||'matematyka'):'matematyka')}</div>
+    <div class="f"><label>Sala</label><input id="i-room" value="${ex?esc(ex.room):''}" placeholder="np. 23"></div>
+    ${acts(!!ex)}`,()=>{
+      const sv=chipVal('slot'), kl=chipVal('kl');
+      if(sv===''||!kl)return toast('Wybierz numer lekcji i klasę');
+      const slot=Number(sv);
+      const o={id:ex?ex.id:uid(),day:d,slot,kl,kind:chipVal('kind')||'matematyka',
+        room:document.getElementById('i-room').value.trim()};
+      S.plan.lessons=S.plan.lessons.filter(l=>l.id!==o.id&&!(l.day===d&&l.slot===slot));
+      S.plan.lessons.push(o);save.plan();closeSheet();render();toast('Zapisano');
+    });
   bindDel(()=>{S.plan.lessons=S.plan.lessons.filter(l=>l.id!==id);save.plan();closeSheet();render();toast('Usunięto')});
 }
-
 function sheetDuty(day,after){
-  const ex=dutyAt(day,after), br=breaks(day).find(b=>b.after===Number(after));
+  const ex=dutyAt(day,after);
+  const s1=SL(after), s2=SL(Number(after)+1);
   openSheet(`<h2>Dyżur — ${DAYS[day]}</h2>
-  <p class="meta" style="margin:-6px 0 12px">Przerwa po ${after}. lekcji${br?`, ${br.from}–${br.to}`:''}</p>
-  <div class="f"><label>Miejsce</label><input id="i-place" value="${ex?esc(ex.place):''}" placeholder="np. Piętro 1, Boisko 3, III p. 2"></div>
-  ${acts(!!ex)}`,()=>{
-    const place=document.getElementById('i-place').value.trim();
-    if(!place)return toast('Wpisz miejsce');
-    S.plan.duties=S.plan.duties.filter(x=>!(x.day===day&&Number(x.after)===Number(after)));
-    S.plan.duties.push({id:uid(),day,after:Number(after),place});
-    save.plan();closeSheet();render();toast('Zapisano dyżur');
-  });
+    <p class="meta" style="margin:-6px 0 12px">Przerwa po ${after}. lekcji, ${s1.b}–${s2.a}</p>
+    <div class="f"><label>Miejsce</label><input id="i-place" value="${ex?esc(ex.place):''}" placeholder="np. Piętro 1, Boisko 3, III p. 2"></div>
+    ${acts(!!ex)}`,()=>{
+      const place=document.getElementById('i-place').value.trim();
+      if(!place)return toast('Wpisz miejsce');
+      S.plan.duties=S.plan.duties.filter(x=>!(x.day===day&&Number(x.after)===Number(after)));
+      S.plan.duties.push({id:uid(),day,after:Number(after),place});
+      save.plan();closeSheet();render();toast('Zapisano dyżur');
+    });
   bindDel(()=>{S.plan.duties=S.plan.duties.filter(x=>!(x.day===day&&Number(x.after)===Number(after)));
-  save.plan();closeSheet();render();toast('Usunięto')});
+    save.plan();closeSheet();render();toast('Usunięto')});
 }
-
 function sheetTest(id,date){
   const ex=S.tests.find(t=>t.id===id);
+  const modeDefault=ex&&ex.mode==='uczen'?'Pojedynczy uczeń':'Cała klasa';
+  const slotDefault=ex?(ex.slotMode==='manual'?String(ex.slotManual):'auto'):'auto';
   openSheet(`<h2>${ex?'Edytuj termin':'Nowy termin'}</h2>
-  <div class="f"><label>Klasa</label>${chipRow('kl',CLASSES,ex?ex.kl:'')}</div>
-  <div class="f"><label>Rodzaj</label>${chipRow('type',TEST_TYPES,ex?ex.type:'kartkówka')}</div>
-  <div class="f"><label>Data</label><input type="date" id="i-date" value="${ex?ex.date:(date||isoToday())}"></div>
-  <div class="f"><label>Dział</label><input id="i-dzial" value="${ex?esc(ex.dzial):''}" placeholder="np. Ułamki zwykłe"></div>
-  <div class="f"><label>Zakres materiału</label><textarea id="i-zakres">${ex?esc(ex.zakres):''}</textarea></div>
-  <div class="f"><label>Stan</label>${chipRow('status',TEST_STATUS,ex?ex.status:'zapowiedziany')}</div>
-  ${acts(!!ex)}`,()=>{
-    const kl=chipVal('kl');if(!kl)return toast('Wybierz klasę');
-    const o={id:ex?ex.id:uid(),kl,type:chipVal('type')||'kartkówka',
-      date:document.getElementById('i-date').value||isoToday(),
-      dzial:document.getElementById('i-dzial').value.trim(),
-      zakres:document.getElementById('i-zakres').value.trim(),
-      status:chipVal('status')||'zapowiedziany'};
-    if(ex)S.tests=S.tests.map(t=>t.id===ex.id?o:t);else S.tests.push(o);
-    save.tests();closeSheet();render();toast('Zapisano');
-  });
+    <div class="f"><label>Dla kogo</label>${chipRow('mode',['Cała klasa','Pojedynczy uczeń'],modeDefault)}</div>
+    <div class="f" id="f-student" style="${modeDefault==='Pojedynczy uczeń'?'':'display:none'}">
+      <label>Imię i nazwisko</label><input id="i-student" value="${ex?esc(ex.student||''):''}" placeholder="np. Jan Kowalski"></div>
+    <div class="f"><label>Klasa${modeDefault==='Pojedynczy uczeń'?' (opcjonalnie — do rozpoznania lekcji)':''}</label>${chipRow('kl',CLASSES,ex?ex.kl:'')}</div>
+    <div class="f"><label>Rodzaj</label>${chipRow('type',TEST_TYPES,ex?ex.type:'kartkówka')}</div>
+    <div class="f"><label>Data</label><input type="date" id="i-date" value="${ex?ex.date:(date||isoToday())}"></div>
+    <div class="f"><label>Godzina lekcyjna</label>${chipRow('slot',['auto',...SLOTS.map(s=>String(s.n))],slotDefault)}</div>
+    <p class="meta" style="margin-top:-6px">„auto" dopasuje godzinę z planu wybranej klasy w tym dniu. Wybierz numer ręcznie, jeśli to poprawa poza planem.</p>
+    <div class="f"><label>Dział</label><input id="i-dzial" value="${ex?esc(ex.dzial):''}" placeholder="np. Ułamki zwykłe"></div>
+    <div class="f"><label>Zakres materiału</label><textarea id="i-zakres">${ex?esc(ex.zakres):''}</textarea></div>
+    <div class="f"><label>Stan</label>${chipRow('status',TEST_STATUS,ex?ex.status:'zapowiedziany')}</div>
+    ${acts(!!ex)}`,()=>{
+      const modeVal=chipVal('mode')||'Cała klasa';
+      const mode=modeVal==='Pojedynczy uczeń'?'uczen':'klasa';
+      const student=mode==='uczen'?document.getElementById('i-student').value.trim():'';
+      if(mode==='uczen'&&!student)return toast('Wpisz imię i nazwisko ucznia');
+      const kl=chipVal('kl');
+      if(mode==='klasa'&&!kl)return toast('Wybierz klasę');
+      const slotSel=chipVal('slot')||'auto';
+      const slotMode=slotSel==='auto'?'auto':'manual';
+      const slotManual=slotMode==='manual'?Number(slotSel):null;
+      const o={id:ex?ex.id:uid(),mode,student,kl,
+        type:chipVal('type')||'kartkówka',
+        date:document.getElementById('i-date').value||isoToday(),
+        slotMode,slotManual,
+        dzial:document.getElementById('i-dzial').value.trim(),
+        zakres:document.getElementById('i-zakres').value.trim(),
+        status:chipVal('status')||'zapowiedziany'};
+      if(ex)S.tests=S.tests.map(t=>t.id===ex.id?o:t);else S.tests.push(o);
+      save.tests();closeSheet();render();toast('Zapisano');
+    });
   bindDel(()=>{S.tests=S.tests.filter(t=>t.id!==id);save.tests();closeSheet();render();toast('Usunięto')});
 }
-
-function sheetItem(id,date){
-  const ex=S.items.find(x=>x.id===id);
-  openSheet(`<h2>${ex?'Edytuj wpis':'Nowy wpis'}</h2>
-  <div class="f"><label>Rodzaj</label>${chipRow('type',['zadanie','wydarzenie'],ex?ex.type:'zadanie')}</div>
-  <div class="f"><label>Treść</label><input id="i-text" value="${ex?esc(ex.text):''}" placeholder="np. sprawdzić kartkówki 6A"></div>
-  <div class="f"><label>Data</label><input type="date" id="i-date" value="${ex?ex.date:(date||isoToday())}"></div>
-  <div class="f"><label>Priorytet</label>${chipRow('prio',PRIOS,ex?ex.prio:'średni')}</div>
-  <div class="f"><label>Kategoria</label>${chipRow('cat',CATS,ex?ex.cat:'dydaktyka')}</div>
-  ${acts(!!ex)}`,()=>{
-    const text=document.getElementById('i-text').value.trim();
-    if(!text)return toast('Wpisz treść');
-    const o={id:ex?ex.id:uid(),type:chipVal('type')||'zadanie',text,
-      date:document.getElementById('i-date').value||isoToday(),
-      prio:chipVal('prio')||'średni',cat:chipVal('cat')||'dydaktyka',done:ex?ex.done:false};
-    if(ex)S.items=S.items.map(x=>x.id===ex.id?o:x);else S.items.push(o);
-    save.items();closeSheet();render();toast('Zapisano');
-  });
+function sheetEvent(id,date){
+  const ex=S.items.find(x=>x.id===id&&x.type==='wydarzenie');
+  openSheet(`<h2>${ex?'Edytuj wydarzenie':'Nowe wydarzenie'}</h2>
+    <div class="f"><label>Treść</label><input id="i-text" value="${ex?esc(ex.text):''}" placeholder="np. zebranie z rodzicami"></div>
+    <div class="f2">
+      <div class="f"><label>Data</label><input type="date" id="i-date" value="${ex?ex.date:(date||isoToday())}"></div>
+      <div class="f"><label>Godzina</label><input type="time" id="i-time" value="${ex&&ex.time?ex.time:''}"></div>
+    </div>
+    <div class="f"><label>Kategoria</label>${chipRow('cat',CATS,ex?ex.cat:'dydaktyka')}</div>
+    <div class="f"><label>Opis</label><textarea id="i-desc" placeholder="Dodatkowe informacje, np. miejsce, agenda, kto uczestniczy">${ex?esc(ex.desc):''}</textarea></div>
+    ${acts(!!ex)}`,()=>{
+      const text=document.getElementById('i-text').value.trim();
+      if(!text)return toast('Wpisz treść');
+      const o={id:ex?ex.id:uid(),type:'wydarzenie',text,
+        date:document.getElementById('i-date').value||isoToday(),
+        time:document.getElementById('i-time').value||'',
+        cat:chipVal('cat')||'dydaktyka',
+        desc:document.getElementById('i-desc').value.trim()};
+      if(ex)S.items=S.items.map(x=>x.id===ex.id?o:x);else S.items.push(o);
+      save.items();closeSheet();render();toast('Zapisano');
+    });
   bindDel(()=>{S.items=S.items.filter(x=>x.id!==id);save.items();closeSheet();render();toast('Usunięto')});
 }
-
+function sheetTask(id,date){
+  const ex=S.items.find(x=>x.id===id&&x.type==='zadanie');
+  openSheet(`<h2>${ex?'Edytuj zadanie':'Nowe zadanie'}</h2>
+    <div class="f"><label>Treść</label><input id="i-text" value="${ex?esc(ex.text):''}" placeholder="np. sprawdzić kartkówki 6A"></div>
+    <div class="f"><label>Data</label><input type="date" id="i-date" value="${ex?ex.date:(date||isoToday())}"></div>
+    <div class="f"><label>Priorytet</label>${chipRow('prio',PRIOS,ex?ex.prio:'średni')}</div>
+    <div class="f"><label>Kategoria</label>${chipRow('cat',CATS,ex?ex.cat:'dydaktyka')}</div>
+    <div class="f"><label>Opis</label><textarea id="i-desc" placeholder="Dodatkowe informacje, które nie muszą być widoczne od razu">${ex?esc(ex.desc):''}</textarea></div>
+    ${acts(!!ex)}`,()=>{
+      const text=document.getElementById('i-text').value.trim();
+      if(!text)return toast('Wpisz treść');
+      const o={id:ex?ex.id:uid(),type:'zadanie',text,
+        date:document.getElementById('i-date').value||isoToday(),
+        prio:chipVal('prio')||'średni',cat:chipVal('cat')||'dydaktyka',done:ex?ex.done:false,
+        desc:document.getElementById('i-desc').value.trim()};
+      if(ex)S.items=S.items.map(x=>x.id===ex.id?o:x);else S.items.push(o);
+      save.items();closeSheet();render();toast('Zapisano');
+    });
+  bindDel(()=>{S.items=S.items.filter(x=>x.id!==id);save.items();closeSheet();render();toast('Usunięto')});
+}
 function sheetIdea(id){
   const ex=S.ideas.find(i=>i.id===id);
   openSheet(`<h2>${ex?'Edytuj pomysł':'Nowy pomysł'}</h2>
-  <div class="f"><label>Klasa</label>${chipRow('kl',CLASSES,ex?ex.kl:'')}</div>
-  <div class="f2"><div class="f"><label>Dział</label><input id="i-dzial" value="${ex?esc(ex.dzial):''}" placeholder="np. Figury"></div>
-  <div class="f" style="max-width:104px"><label>Nr lekcji</label><input id="i-nr" type="number" min="1" value="${ex&&ex.nr?ex.nr:''}"></div></div>
-  <div class="f"><label>Temat</label><input id="i-temat" value="${ex?esc(ex.temat):''}"></div>
-  <div class="f"><label>Metoda pracy</label><input id="i-metoda" value="${ex?esc(ex.metoda):''}" placeholder="np. praca w grupach przy tablicach"></div>
-  <div class="f"><label>Potrzebne materiały</label><textarea id="i-mat">${ex?esc(ex.mat):''}</textarea></div>
-  <div class="f"><label>Stan</label>${chipRow('status',IDEA_STATUS,ex?ex.status:'pomysł')}</div>
-  ${acts(!!ex)}`,()=>{
-    const kl=chipVal('kl'),temat=document.getElementById('i-temat').value.trim();
-    if(!kl)return toast('Wybierz klasę');if(!temat)return toast('Wpisz temat');
-    const o={id:ex?ex.id:uid(),kl,dzial:document.getElementById('i-dzial').value.trim(),
-      nr:Number(document.getElementById('i-nr').value)||null,temat,
-      metoda:document.getElementById('i-metoda').value.trim(),
-      mat:document.getElementById('i-mat').value.trim(),status:chipVal('status')||'pomysł'};
-    if(ex)S.ideas=S.ideas.map(i=>i.id===ex.id?o:i);else S.ideas.push(o);
-    save.ideas();closeSheet();render();toast('Zapisano');
-  });
+    <div class="f"><label>Klasa</label>${chipRow('kl',CLASSES,ex?ex.kl:'')}</div>
+    <div class="f2"><div class="f"><label>Dział</label><input id="i-dzial" value="${ex?esc(ex.dzial):''}" placeholder="np. Figury"></div>
+      <div class="f" style="max-width:104px"><label>Nr lekcji</label><input id="i-nr" type="number" min="1" value="${ex&&ex.nr?ex.nr:''}"></div></div>
+    <div class="f"><label>Temat</label><input id="i-temat" value="${ex?esc(ex.temat):''}"></div>
+    <div class="f"><label>Metoda pracy</label><input id="i-metoda" value="${ex?esc(ex.metoda):''}" placeholder="np. praca w grupach przy tablicach"></div>
+    <div class="f"><label>Potrzebne materiały</label><textarea id="i-mat">${ex?esc(ex.mat):''}</textarea></div>
+    <div class="f"><label>Stan</label>${chipRow('status',IDEA_STATUS,ex?ex.status:'pomysł')}</div>
+    ${acts(!!ex)}`,()=>{
+      const kl=chipVal('kl'),temat=document.getElementById('i-temat').value.trim();
+      if(!kl)return toast('Wybierz klasę');if(!temat)return toast('Wpisz temat');
+      const o={id:ex?ex.id:uid(),kl,dzial:document.getElementById('i-dzial').value.trim(),
+        nr:Number(document.getElementById('i-nr').value)||null,temat,
+        metoda:document.getElementById('i-metoda').value.trim(),
+        mat:document.getElementById('i-mat').value.trim(),status:chipVal('status')||'pomysł'};
+      if(ex)S.ideas=S.ideas.map(i=>i.id===ex.id?o:i);else S.ideas.push(o);
+      save.ideas();closeSheet();render();toast('Zapisano');
+    });
   bindDel(()=>{S.ideas=S.ideas.filter(i=>i.id!==id);save.ideas();closeSheet();render();toast('Usunięto')});
 }
-
 function sheetDay(ds){
-  const t=S.tests.filter(x=>x.date===ds), it=S.items.filter(x=>x.date===ds);
+  const list=dayEntries(ds);
   let h=`<h2>${fmtD(ds)}</h2><p class="meta" style="margin:-6px 0 12px">${relD(ds)}</p>`;
-  if(t.length){h+=`<div class="lbl">Sprawdziany</div>`+t.map(x=>
-    `<div class="card flat"><div class="row"><div class="grow"><div class="ttl">${esc(x.dzial||x.type)}</div>
-    <div class="meta">${klPill(x.kl)} <span class="pill">${esc(x.type)}</span></div></div>
-    <button class="pill btn" data-edit-test="${x.id}">edytuj</button></div></div>`).join('')}
-  if(it.length){h+=`<div class="lbl">Zadania i wydarzenia</div>`+it.map(x=>
-    `<div class="card flat"><div class="row"><div class="grow"><div class="ttl">${esc(x.text)}</div>
-    <div class="meta"><span class="pill" style="color:${TCOL[x.type]}">${esc(x.type)}</span></div></div>
-    <button class="pill btn" data-edit-item="${x.id}">edytuj</button></div></div>`).join('')}
-  if(!t.length&&!it.length)h+=`<div class="empty"><p>Ten dzień jest pusty.</p><span>Dodaj coś poniżej.</span></div>`;
-  h+=`<div class="sheet-actions">
-  <button class="btn ghost" type="button" data-close>Zamknij</button>
-  <button class="btn primary" type="button" data-newtest="${ds}">+ Sprawdzian</button>
-  <button class="btn primary" type="button" data-newitem="${ds}" style="background:var(--amber)">+ Zadanie</button></div>`;
+  h+= list.length ? list.map(x=>{
+      if(x._kind==='test'){
+        return `<div class="card flat"><div class="row"><div class="grow">
+          <div class="ttl">${x.mode==='uczen'?esc(x.student):esc(x.dzial||x.type)}</div>
+          <div class="meta">${testWho(x)} <span class="pill">${esc(x.type)}</span></div></div>
+          <button class="pill btn" data-edit-test="${x.id}">edytuj</button></div></div>`;
+      }
+      return `<div class="card flat"><div class="row"><div class="grow"><div class="ttl">${esc(x.text)}</div>
+        <div class="meta"><span class="pill" style="color:${KCOL[x.type]}">${esc(x.type)}</span>${x.time?` ${esc(x.time)}`:''}</div>
+        ${x.desc?`<div class="meta">${esc(x.desc)}</div>`:''}</div>
+        <button class="pill btn" data-edit-item="${x.id}">edytuj</button></div></div>`;
+    }).join('')
+    : `<div class="empty"><p>Ten dzień jest pusty.</p><span>Dodaj coś poniżej.</span></div>`;
+  h+=`<div class="sheet-actions"><button class="btn ghost" type="button" data-close>Zamknij</button></div>
+    <div class="sheet-actions">
+      <button class="btn primary" type="button" data-newtest="${ds}" style="background:${KCOL.sprawdzian}">+ Sprawdzian</button>
+      <button class="btn primary" type="button" data-newevent="${ds}" style="background:${KCOL.wydarzenie}">+ Wydarzenie</button>
+      <button class="btn primary" type="button" data-newtask="${ds}" style="background:${KCOL.zadanie}">+ Zadanie</button>
+    </div>`;
   openSheet(h,null);
 }
 
@@ -712,29 +910,43 @@ document.addEventListener('click',e=>{
   const t=e.target.closest('button');if(!t)return;
   const D=t.dataset;
   if(t.closest('[data-chips]')){
-    t.closest('[data-chips]').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed','false'));
-    t.setAttribute('aria-pressed','true');return;
+    const grp=t.closest('[data-chips]');
+    grp.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed','false'));
+    t.setAttribute('aria-pressed','true');
+    if(grp.dataset.chips==='mode'){
+      const fld=document.getElementById('f-student');
+      if(fld)fld.style.display=(t.dataset.val==='Pojedynczy uczeń')?'':'none';
+    }
+    return;
   }
   if(D.v){go(D.v);return}
   if(D.pd!==undefined){planDay=Number(D.pd);renderPlan();return}
   if(D.fi){fIdea=D.fi;renderIdeas();return}
   if(D.cal){
-    const [st,dir]=D.cal.split(':');const o=st==='T'?calT:calZ;
-    o.m+=Number(dir);if(o.m<0){o.m=11;o.y--}if(o.m>11){o.m=0;o.y++}
-    if(st==='T')renderTesty();else renderZadania();return;
+    calK.m+=Number(D.cal);
+    if(calK.m<0){calK.m=11;calK.y--}
+    if(calK.m>11){calK.m=0;calK.y++}
+    renderKalendarz();return;
   }
   if(D.day){sheetDay(D.day);return}
   if(D.setduty){const [d,a]=D.setduty.split('-');sheetDuty(Number(d),Number(a));return}
+  if(D.addlesslot){const [d,s]=D.addlesslot.split('-').map(Number);sheetLesson(null,d,s);return}
   if(D.addles!==undefined&&D.addles!==''){sheetLesson(null,Number(D.addles));return}
   if(D.editLes){sheetLesson(D.editLes);return}
   if(D.open==='test'){sheetTest();return}
-  if(D.open==='item'){sheetItem();return}
+  if(D.open==='event'){sheetEvent();return}
+  if(D.open==='task'){sheetTask();return}
   if(D.open==='idea'){sheetIdea();return}
   if(D.editTest){sheetTest(D.editTest);return}
-  if(D.editItem){sheetItem(D.editItem);return}
+  if(D.editItem){
+    const it=S.items.find(x=>x.id===D.editItem);
+    if(it&&it.type==='wydarzenie')sheetEvent(D.editItem);else sheetTask(D.editItem);
+    return;
+  }
   if(D.editIdea){sheetIdea(D.editIdea);return}
   if(D.newtest){sheetTest(null,D.newtest);return}
-  if(D.newitem){sheetItem(null,D.newitem);return}
+  if(D.newevent){sheetEvent(null,D.newevent);return}
+  if(D.newtask){sheetTask(null,D.newtask);return}
   if(D.toggle){S.items=S.items.map(x=>x.id===D.toggle?{...x,done:!x.done}:x);save.items();render();return}
   if(t.hasAttribute('data-close')){closeSheet();return}
   if(t.hasAttribute('data-save')&&sheetSave){sheetSave();return}
@@ -749,8 +961,9 @@ async function boot(){
     getKey('planer:items',null),getKey('planer:ideas',[]),getKey('planer:tasks',[])
   ]);
   S.tests=tests||[];S.ideas=ideas||[];
-  S.items = items!==null ? items : (oldTasks||[]).map(t=>({id:t.id||uid(),type:'zadanie',text:t.text||'',date:t.due||isoToday(),
-    prio:t.prio||'średni',cat:t.cat||'dydaktyka',done:!!t.done}));
+  S.items = items!==null ? items
+    : (oldTasks||[]).map(t=>({id:t.id||uid(),type:'zadanie',text:t.text||'',date:t.due||isoToday(),
+        prio:t.prio||'średni',cat:t.cat||'dydaktyka',done:!!t.done}));
   const seeded=!(plan&&plan.lessons&&plan.lessons.length);
   if(seeded){
     S.plan={lessons:SEED.map(([day,slot,kl,room,kind])=>
