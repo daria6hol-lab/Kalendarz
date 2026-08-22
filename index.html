@@ -99,6 +99,7 @@ main{max-width:900px;margin:0 auto;padding:0 14px 26px}
 .nrow .sq[aria-pressed="true"]{background:var(--green);border-color:var(--green)}
 .nrow .tx{flex:1;min-width:0;font-size:13.5px;line-height:1.4}
 .nrow.done .tx{text-decoration:line-through;color:var(--ink-faint)}
+.nrow.late{background:#FBEBE7;border-radius:8px;padding:6px 8px;margin-bottom:4px}
 .nnone{font-size:12.5px;color:var(--ink-faint);font-style:italic;padding:2px 0 6px}
 
 /* ============ PLAN ============ */
@@ -530,10 +531,9 @@ function renderToday(){
     }
   }
 
-  const late=S.items.filter(x=>x.type==='zadanie'&&!x.done&&x.date&&dft(x.date)<0);
+  const late=S.items.filter(x=>x.type==='zadanie'&&!x.done&&x.date&&dft(x.date)<0)
+    .sort((a,b)=>a.date.localeCompare(b.date));
   const itm=S.items.filter(x=>x.date===td);
-  const todoAll=[...late.map(x=>({...x,_late:true})),...itm.filter(x=>!late.some(l=>l.id===x.id))];
-  todoAll.sort((a,b)=>(a.type==='wydarzenie')-(b.type==='wydarzenie'));
 
   let R=`<div class="notecard"><div class="note-sec"><div class="note-h">Dziś sprawdzam / pytam</div>`;
   R+= testsToday.length ? testsToday.map(t=>{
@@ -541,8 +541,9 @@ function renderToday(){
       return `<div class="ntile" style="background:${testColor(t)}">${esc(label)}</div>`;
     }).join('')
     : `<div class="nnone">nic na dziś</div>`;
-  R+=`</div><div class="note-sec"><div class="note-h">Do zrobienia</div>`;
-  R+= todoAll.length ? todoAll.map(x=>{
+  R+=`</div>`;
+  R+=`<div class="note-sec"><div class="note-h">Do zrobienia dziś</div>`;
+  R+= itm.length ? itm.map(x=>{
       if(x.type==='wydarzenie'){
         const label=(x.time?x.time+' — ':'')+x.text;
         return `<div class="ntile" style="background:${KCOL.wydarzenie}">${esc(label)}</div>`;
@@ -550,10 +551,19 @@ function renderToday(){
       return `<div class="nrow ${x.done?'done':''}">
         <button class="sq" aria-pressed="${!!x.done}" data-toggle="${x.id}" aria-label="Odhacz">
           <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:${x.done?1:0}"><path d="M4 12.5 9.5 18 20 6.5"/></svg></button>
-        <span class="tx">${esc(x.text)}${x._late?` <span style="color:var(--red);font-size:11px;font-weight:700">${relD(x.date)}</span>`:''}</span></div>`;
+        <span class="tx">${esc(x.text)}</span></div>`;
     }).join('')
     : `<div class="nnone">pusto</div>`;
-  R+=`</div></div>`;
+  R+=`</div>`;
+  if(late.length){
+    R+=`<div class="note-sec"><div class="note-h" style="color:var(--red)">Zaległe zadania</div>`;
+    R+=late.map(x=>`<div class="nrow late">
+        <button class="sq" aria-pressed="false" data-toggle="${x.id}" aria-label="Odhacz">
+          <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0"><path d="M4 12.5 9.5 18 20 6.5"/></svg></button>
+        <span class="tx">${esc(x.text)} <span style="color:var(--red);font-size:11px;font-weight:700">${relD(x.date)}</span></span></div>`).join('');
+    R+=`</div>`;
+  }
+  R+=`</div>`;
 
   document.getElementById('today-body').innerHTML=
     `<div class="split">
