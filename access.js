@@ -14,5 +14,5 @@
    hasła do bazy danych — te dają pełny dostęp z pominięciem RLS
    i nie mogą trafić do repozytorium ani do przeglądarki.
    ============================================================ */
-export const SUPABASE_URL = 'WKLEJ-TU-PROJECT-URL';
-export const SUPABASE_ANON_KEY = 'WKLEJ-TU-ANON-PUBLIC-KEY';
+export const SUPABASE_URL = 'https://eisuwuabzgesaduvxmka.supabase.co';
+export const SUPABASE_ANON_KEY = 'sb_publishable_LOqc_nMO9g_hV3i6534c2A_0p5yezBL';
