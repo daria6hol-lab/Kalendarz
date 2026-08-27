@@ -273,16 +273,21 @@ nav svg{width:20px;height:20px;stroke-width:1.9}
 
 <script type="module">
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+import { SUPABASE_URL, SUPABASE_ANON_KEY } from './access.js';
 
-/* ============================================================
-   KONFIGURACJA SUPABASE — wklej tu swoje dane z zakładki
-   Settings → API w panelu Supabase, potem wgraj plik na GitHub.
-   ============================================================ */
-const SUPABASE_URL = 'https://eisuwuabzgesaduvxmka.supabase.co';
-const SUPABASE_ANON_KEY = 'sb_publishable_LOqc_nMO9g_hV3i6534c2A_0p5yezBL';
-/* ============================================================ */
-
-const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+/* Dane dostępowe do Supabase (URL projektu i klucz anon/publishable)
+   wpisujesz w osobnym pliku access.js — nie w tym pliku. */
+let supabase, SUPABASE_CONFIG_OK=true, SUPABASE_INIT_ERR='';
+try{
+  if(!SUPABASE_URL||SUPABASE_URL.includes('WKLEJ')||!SUPABASE_ANON_KEY||SUPABASE_ANON_KEY.includes('WKLEJ')){
+    throw new Error('Nie uzupełniono danych w pliku access.js (SUPABASE_URL / SUPABASE_ANON_KEY).');
+  }
+  supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+}catch(e){
+  SUPABASE_CONFIG_OK=false;
+  SUPABASE_INIT_ERR=e && e.message ? e.message : String(e);
+  console.error('Błąd konfiguracji Supabase:',e);
+}
 
 const CLASSES=['4B','5B','6A','6B','1 LO','2 LO'];
 const CCOL={'4B':'#B4531F','5B':'#7A4A8C','6A':'#1F8080','6B':'#9C3566','1 LO':'#C46B6B','2 LO':'#14615F'};
@@ -294,7 +299,8 @@ const MONN=['Styczeń','Luty','Marzec','Kwiecień','Maj','Czerwiec','Lipiec','Si
 const SLOTS=[
  {n:0,a:'7:00',b:'7:45'},{n:1,a:'7:30',b:'8:15'},{n:2,a:'8:20',b:'9:05'},
  {n:3,a:'9:10',b:'9:55'},{n:4,a:'10:00',b:'10:45'},{n:5,a:'11:00',b:'11:45'},
- {n:6,a:'11:55',b:'12:40'},{n:7,a:'13:00',b:'13:45'},{n:8,a:'14:00',b:'14:45'}
+ {n:6,a:'11:55',b:'12:40'},{n:7,a:'13:00',b:'13:45'},{n:8,a:'14:05',b:'14:50'},
+ {n:9,a:'14:55',b:'15:40'},{n:10,a:'15:45',b:'16:30'}
 ];
 const SL=n=>SLOTS.find(s=>s.n===Number(n))||{n:n,a:'',b:''};
 const TEST_TYPES=['kartkówka','sprawdzian','praca klasowa','poprawa','projekt'];
@@ -345,11 +351,12 @@ function todayQuote(){
 }
 
 const SEED=[
- [0,2,'6B','23'],[0,3,'4B','34'],[0,4,'6A','38'],[0,5,'5B','24'],[0,7,'2 LO','39'],
- [1,3,'6B','23'],[1,4,'4B','37'],[1,5,'5B','32'],[1,6,'2 LO','36'],[1,7,'6A','9'],
- [2,3,'6A','37'],[2,4,'4B','37'],[2,5,'5B','9'],[2,6,'6B','35'],[2,7,'2 LO','38','godzina wychowawcza'],[2,8,'1 LO',''],
- [3,3,'4B','26'],[3,5,'6B','24'],[3,6,'6A','35'],[3,7,'1 LO','23'],
- [4,2,'5B','32'],[4,3,'6A','24'],[4,4,'2 LO','24'],[4,5,'4B','36'],[4,6,'1 LO','36']
+ [0,1,'6B','25'],[0,2,'4B','25'],[0,3,'4B','25'],[0,5,'5B','25'],[0,7,'6A','25'],
+ [0,8,'2 LO','39'],[0,9,'2 LO','39','godzina wychowawcza'],
+ [1,3,'2 LO','25'],[1,4,'4B','25'],[1,5,'6B','25'],[1,7,'6A','25'],[1,8,'1 LO','25'],
+ [2,1,'5B','25'],[2,2,'6B','25'],[2,3,'1 LO','25'],[2,4,'4B','25'],[2,5,'6A','25'],[2,7,'2 LO','25'],
+ [3,3,'5B','25'],[3,4,'4B','25'],[3,5,'1 LO','25'],[3,6,'6A','25'],[3,7,'2 LO','25'],
+ [4,1,'5B','25'],[4,2,'6B','25'],[4,3,'2 LO','37'],[4,4,'6A','25']
 ];
 
 let S={plan:{lessons:[],duties:[]},tests:[],items:[],ideas:[]};
@@ -1002,24 +1009,38 @@ async function doLogin(){
   const pass=document.getElementById('auth-pass').value;
   const errEl=document.getElementById('auth-err');
   errEl.textContent='';
+  if(!SUPABASE_CONFIG_OK){errEl.textContent='Błąd konfiguracji: '+SUPABASE_INIT_ERR;return}
   if(!email||!pass){errEl.textContent='Podaj e-mail i hasło';return}
   const btn=document.getElementById('auth-submit');
   btn.textContent='Loguję…';btn.disabled=true;
-  const {error}=await supabase.auth.signInWithPassword({email,password:pass});
-  btn.textContent='Zaloguj';btn.disabled=false;
-  if(error){errEl.textContent='Błędny e-mail lub hasło';return}
-  showApp();await boot();
+  try{
+    const {error}=await supabase.auth.signInWithPassword({email,password:pass});
+    if(error){errEl.textContent=error.message||'Błędny e-mail lub hasło';return}
+    showApp();await boot();
+  }catch(e){
+    console.error('Błąd logowania:',e);
+    errEl.textContent='Błąd połączenia z Supabase: '+(e&&e.message?e.message:String(e));
+  }finally{
+    btn.textContent='Zaloguj';btn.disabled=false;
+  }
 }
 document.getElementById('auth-submit').addEventListener('click',doLogin);
 document.getElementById('auth-pass').addEventListener('keydown',e=>{if(e.key==='Enter')doLogin()});
 document.getElementById('auth-email').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('auth-pass').focus()});
 document.getElementById('logout-btn').addEventListener('click',async()=>{
-  await supabase.auth.signOut();location.reload();
+  if(SUPABASE_CONFIG_OK){try{await supabase.auth.signOut()}catch(e){}}
+  location.reload();
 });
 
 (async function start(){
-  const {data:{session}}=await supabase.auth.getSession();
-  if(session){showApp();await boot();}else{showLogin();}
+  if(!SUPABASE_CONFIG_OK){showLogin('Błąd konfiguracji: '+SUPABASE_INIT_ERR);return}
+  try{
+    const {data:{session}}=await supabase.auth.getSession();
+    if(session){showApp();await boot();}else{showLogin();}
+  }catch(e){
+    console.error('Błąd startu:',e);
+    showLogin('Błąd połączenia z Supabase: '+(e&&e.message?e.message:String(e)));
+  }
 })();
 </script>
 </body>
