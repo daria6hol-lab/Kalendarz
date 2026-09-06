@@ -273,19 +273,14 @@ nav svg{width:20px;height:20px;stroke-width:1.9}
 
 <script type="module">
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+import { SUPABASE_URL, SUPABASE_ANON_KEY } from './access.js';
 
-/* ============================================================
-   KONFIGURACJA SUPABASE — wklej tu swoje dane z zakładki
-   Settings → API w panelu Supabase, potem wgraj plik na GitHub.
-   ============================================================ */
-const SUPABASE_URL = 'WKLEJ-TU-PROJECT-URL';
-const SUPABASE_ANON_KEY = 'WKLEJ-TU-ANON-PUBLIC-KEY';
-/* ============================================================ */
-
+/* Dane dostępowe do Supabase (URL projektu i klucz anon/publishable)
+   wpisujesz w osobnym pliku access.js — nie w tym pliku. */
 let supabase, SUPABASE_CONFIG_OK=true, SUPABASE_INIT_ERR='';
 try{
   if(!SUPABASE_URL||SUPABASE_URL.includes('WKLEJ')||!SUPABASE_ANON_KEY||SUPABASE_ANON_KEY.includes('WKLEJ')){
-    throw new Error('Nie uzupełniono SUPABASE_URL / SUPABASE_ANON_KEY w pliku.');
+    throw new Error('Nie uzupełniono danych w pliku access.js (SUPABASE_URL / SUPABASE_ANON_KEY).');
   }
   supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 }catch(e){
